@@ -756,7 +756,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.230485, y: -3.9999995, z: -10}
+  m_LocalPosition: {x: -7.230485, y: -4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -970,7 +970,7 @@ MonoBehaviour:
   nonVisibleAct: 0
   wallCheckR: {fileID: 583024963}
   wallCheckL: {fileID: 225673642}
-  playerStatus: {fileID: 0}
+  playerStatus: {fileID: 1934897663}
 --- !u!70 &521458949
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9073,7 +9073,7 @@ Transform:
   m_GameObject: {fileID: 949677587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.09, y: -3.69, z: -10}
+  m_LocalPosition: {x: -9.137, y: -3.987, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10198,6 +10198,37 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 3
   mNoiseOffsets: {x: 226.8418, y: -544.24927, z: 469.7413}
+--- !u!1 &1626809334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626809335}
+  m_Layer: 6
+  m_Name: AttackPointUlt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626809335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626809334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1934897655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676442036
 GameObject:
   m_ObjectHideFlags: 0
@@ -10795,7 +10826,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1893702922, guid: 239cc04f7c2a66a429d21bffe61354db, type: 3}
+  m_Sprite: {fileID: 576268727, guid: a613f45bb8ecd8345acd22e8fc8e772f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10815,13 +10846,14 @@ Transform:
   m_GameObject: {fileID: 1934897652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.09, y: -3.69, z: 0}
+  m_LocalPosition: {x: -9.137, y: -3.987, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 79989472}
   - {fileID: 927515519}
   - {fileID: 930730735}
+  - {fileID: 1626809335}
   - {fileID: 1537858557}
   - {fileID: 349178126}
   m_Father: {fileID: 0}
@@ -10900,19 +10932,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779b1555d3bbf643b2531f45e8169d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 7
   jump_power: 15
   ground: {fileID: 79989474}
   head: {fileID: 927515521}
   attackPointProx: {fileID: 930730735}
   attackRange: 0.5
   attackDamage: 40
-  attackRate: 2
-  nextAttackTime: 0
+  attackRate: 1.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
+  attackPointUlt: {fileID: 1626809335}
+  attackPointSize: {x: 1.9, y: 1.4}
+  ultRate: 1
   ultTime: 0
+  attackDamageUlt: 10
+  enemyLayersUlt:
+    serializedVersion: 2
+    m_Bits: 128
   playerStatus: {fileID: 1934897663}
 --- !u!114 &1934897663
 MonoBehaviour:
@@ -10929,13 +10967,13 @@ MonoBehaviour:
   maxHP: 6
   curHP: 0
   maxMP: 6
-  curMP: 0
+  curMP: 6
   Lv: 0
-  Exp: 0
-  LvUpExp: 0
+  Exp: 10
+  LvUpExp: 20
   isDead: 0
   damageTime: 3
-  flashTime: 0.5
+  flashTime: 0.3
 --- !u!1001 &1966463817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11202,7 +11240,7 @@ PrefabInstance:
     - target: {fileID: 2489824335782250697, guid: 433a875d280d9944c8453d328a90884a, type: 3}
       propertyPath: sounds.Array.data[0].clip
       value: 
-      objectReference: {fileID: 8300000, guid: cc14979e5662eef4aa315be50144b7b8, type: 3}
+      objectReference: {fileID: 8300000, guid: 982b9ce5619244244b3cf07caa1ccd93, type: 3}
     - target: {fileID: 2489824335782250697, guid: 433a875d280d9944c8453d328a90884a, type: 3}
       propertyPath: sounds.Array.data[0].loop
       value: 1

@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//PlayerControlManager
 public class PlayerControl: MonoBehaviour
 {
     [Header("ˆÚ“®”’l")]
@@ -15,16 +14,21 @@ public class PlayerControl: MonoBehaviour
     public GroundCheck ground;                   // ’n–ÊÚG”»’è
     public HeadCheck head;                       // “ªÚG”»’è
     [Header("UŒ‚")]
-    public Transform attackPointProx;            // UŒ‚êŠ
+    public Transform attackPointProx;            // UŒ‚”ÍˆÍ
     public float attackRange = 0.5f;             // UŒ‚”ÍˆÍ
     public int attackDamage = 40;                // ƒ_ƒ[ƒW—Ê
     public float attackRate = 2f;                // UŒ‚Š„‡
-    public float nextAttackTime = 0f;            // ŽŸ‚ÉUŒ‚‚·‚é‚Ü‚Å‚ÌŽžŠÔ
     public LayerMask enemyLayers;                // “GƒŒƒCƒ„[
     [Header("•KŽE‹Z")]
+    public Transform attackPointUlt;             // •KŽE‹ZUŒ‚”ÍˆÍ
+    public Vector2 attackPointSize;
+    public float ultRate = 1f;                   // MPÁ”ïŽüŠú
     public float ultTime = 0f;
+    public int attackDamageUlt = 10;
+    public LayerMask enemyLayersUlt;
     [Space(40)]
     public PlayerStatus playerStatus;
+    public EnemyManager enemyManager;
 
 
     private Rigidbody2D rb = null;
@@ -32,6 +36,8 @@ public class PlayerControl: MonoBehaviour
     private bool head_check = false;
     private bool ground_check = false;
     private bool isJump = false;
+    private bool isUlt = false;
+    private float nextAttackTime = 0f;
 
 
     public void StartToMiddle()
@@ -65,13 +71,16 @@ public class PlayerControl: MonoBehaviour
         // •KŽE‹Z
         if(Input.GetKeyDown(KeyCode.LeftShift) && playerStatus.curMP >= 2)
         {
+            isUlt = false;
             playerStatus.curMP -= 2;
             AudioManager.instance.Play("Ult");
             anim.SetTrigger("atck_ult_start");
             StartCoroutine(Attack_ult());
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || isJump)
+        if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || playerStatus.curMP <= 0)
         {
+            isUlt = true;
+            StopCoroutine(Attack_ult());
             anim.SetTrigger("atck_ult_end");
         }
         /*
@@ -128,14 +137,6 @@ public class PlayerControl: MonoBehaviour
     }
 
 
-    IEnumerator Attack_ult()
-    {
-        print("a");
-        yield return new WaitForSeconds(1.0f);
-
-    }
-
-
     private void Attack_prox()
     {
         if (attackPointProx == null)
@@ -150,6 +151,39 @@ public class PlayerControl: MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyManager>().TakeDamage(attackDamage);
+        }
+    }
+
+
+    IEnumerator Attack_ult()
+    {
+        for (; ; )
+        {
+            if (playerStatus.curMP <= 0 || isUlt)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(ultRate / 2);
+            AttackUlt();
+
+            yield return new WaitForSeconds(ultRate / 2);
+            playerStatus.curMP--;
+            AttackUlt();
+        }
+    }
+
+
+    void AttackUlt()
+    {
+        if (attackPointUlt == null)
+        {
+            Debug.LogError("Attack point is not assigned!");
+            return;
+        }
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyManager>().TakeDamage(attackDamageUlt);
         }
     }
 
@@ -170,6 +204,11 @@ public class PlayerControl: MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPointProx.position, attackRange);
+        if(attackPointUlt == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireCube(attackPointUlt.position, new Vector3(attackPointSize.x, attackPointSize.y));
     }
 }
 

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//PlayerStatusManager
 public class PlayerStatus : MonoBehaviour
 {
     [Header("HP")]
@@ -15,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
     public int Lv;                        // レベル
     public int Exp;                       // 経験値
     public int LvUpExp;                   // 必要経験値
+    [Header("Status")]
     public bool isDead = false;           // 死亡判定
     [Space(30)]
     public float damageTime;              // 無敵時間
@@ -44,6 +44,14 @@ public class PlayerStatus : MonoBehaviour
         if (curMP > maxMP)
         {
             curMP = maxMP;
+        }
+        if (curHP < 0)
+        {
+            curHP = 0;
+        }
+        if (curMP < 0)
+        {
+            curMP = 0;
         }
 
         // レベル処理

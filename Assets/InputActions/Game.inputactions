@@ -1,0 +1,54 @@
+{
+    "name": "Game",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "ab78ad88-d144-4ccc-a71b-ef10a3e2701f",
+            "actions": [
+                {
+                    "name": "Atck_prox",
+                    "type": "Button",
+                    "id": "5e9746a1-167c-432d-aa0a-f0ce7e00ca43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Atck_ult",
+                    "type": "Button",
+                    "id": "aca61917-8ed6-457d-bd4d-7623a7d98fb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2cb4da9c-6dcd-4bdb-9f1c-4871447c19ee",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Atck_prox",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bdf42f2b-83ab-4589-8137-1455b76a1b83",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Atck_ult",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

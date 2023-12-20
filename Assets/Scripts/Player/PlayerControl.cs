@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl: MonoBehaviour
 {
-    [Header("移動数値")]
+    [Header("移動")]
     public float speed = 10;                     // 移動速度
     public float jump_power;                     // ジャンプ力
     [Header("判定")]
@@ -26,6 +26,8 @@ public class PlayerControl: MonoBehaviour
     public float ultTime = 0f;
     public int attackDamageUlt = 10;
     public LayerMask enemyLayersUlt;
+    public int hitRate;
+    public int recoveryRate;
     [Space(40)]
     public PlayerStatus playerStatus;
     public EnemyManager enemyManager;
@@ -71,7 +73,7 @@ public class PlayerControl: MonoBehaviour
         // 必殺技
         if(Input.GetKeyDown(KeyCode.LeftShift) && playerStatus.curMP >= 2)
         {
-            isUlt = false;
+            isUlt = true;
             playerStatus.curMP -= 2;
             AudioManager.instance.Play("Ult");
             anim.SetTrigger("atck_ult_start");
@@ -79,7 +81,7 @@ public class PlayerControl: MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || playerStatus.curMP <= 0)
         {
-            isUlt = true;
+            isUlt = false;
             StopCoroutine(Attack_ult());
             anim.SetTrigger("atck_ult_end");
         }
@@ -106,14 +108,20 @@ public class PlayerControl: MonoBehaviour
             if (horizontalKey > 0)
             {
                 anim.SetBool("run", true);
-                transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
                 rb.velocity = new Vector2(speed, rb.velocity.y);
+                if (!isUlt)
+                {
+                    transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                }
             }
             else if (horizontalKey < 0)
             {
                 anim.SetBool("run", true);
-                transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f);
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
+                if(!isUlt) 
+                {
+                    transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f);
+                }
             }
             else
             {
@@ -160,14 +168,14 @@ public class PlayerControl: MonoBehaviour
         yield return new WaitForSeconds(ultRate);
         for (; ; )
         {
-            if (playerStatus.curMP <= 0 || isUlt)
+            if (playerStatus.curMP <= 0 || !isUlt)
             {
                 break;
             }
 
             yield return new WaitForSeconds(ultRate / 2);
             AttackUlt();
-            if (playerStatus.curMP <= 0 || isUlt)
+            if (playerStatus.curMP <= 0 || !isUlt)
             {
                 break;
             }
@@ -186,10 +194,11 @@ public class PlayerControl: MonoBehaviour
             Debug.LogError("Attack point is not assigned!");
             return;
         }
+        CinemachineShake.instance.ShakeCamera(2f, .1f);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, 0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyManager>().TakeDamageMagic(attackDamageUlt);
+            enemy.GetComponent<EnemyManager>().TakeDamageMagic(attackDamageUlt, hitRate, recoveryRate);
         }
     }
 

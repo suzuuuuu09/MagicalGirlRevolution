@@ -55,7 +55,7 @@ public class PlayerStatus : MonoBehaviour
         }
 
         // ƒŒƒxƒ‹ˆ—
-        if(Exp >= LvUpExp)
+        if (Exp >= LvUpExp)
         {
             Exp -= LvUpExp;
             float _LvUpExp = (float)LvUpExp * 1.2f;
@@ -74,6 +74,7 @@ public class PlayerStatus : MonoBehaviour
             StartCoroutine(Invincible());
         }
     }
+
 
     void Damage()
     {
@@ -96,17 +97,20 @@ public class PlayerStatus : MonoBehaviour
 
     IEnumerator Invincible()
     {
-        Color color = spriteRenderer.color;
-        for (int i = 0; i < damageTime; i++)
+        if (!isDead)
         {
-            yield return new WaitForSeconds(flashTime);
-            spriteRenderer.color = new Color(color.r, color.g, color.b, 0.0f);
-            
-            yield return new WaitForSeconds(flashTime);
-            spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
+            Color color = spriteRenderer.color;
+            for (int i = 0; i < damageTime; i++)
+            {
+                yield return new WaitForSeconds(flashTime);
+                spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
+
+                yield return new WaitForSeconds(flashTime);
+                spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
+            }
+            spriteRenderer.color = color;
+            gameObject.layer = LayerMask.NameToLayer("Player");
         }
-        spriteRenderer.color = color;
-        gameObject.layer = LayerMask.NameToLayer("Player");
     }
-     
+
 }

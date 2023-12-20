@@ -40,12 +40,12 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void TakeDamageMagic(int damage)
+    public void TakeDamageMagic(int damage, int hit, int recovery)
     {
-        if(num <= 80)
+        if(num <= hit)
         {
             curHP -= damage;
-            if(num <= 15)
+            if(num <= recovery)
             {
                 playerStatus.curMP++;
             }

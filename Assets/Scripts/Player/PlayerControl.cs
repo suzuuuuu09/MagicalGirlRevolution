@@ -157,17 +157,23 @@ public class PlayerControl: MonoBehaviour
 
     IEnumerator Attack_ult()
     {
+        yield return new WaitForSeconds(ultRate);
         for (; ; )
         {
             if (playerStatus.curMP <= 0 || isUlt)
             {
                 break;
             }
-            yield return new WaitForSeconds(ultRate / 2);
-            AttackUlt();
 
             yield return new WaitForSeconds(ultRate / 2);
-            playerStatus.curMP--;
+            AttackUlt();
+            if (playerStatus.curMP <= 0 || isUlt)
+            {
+                break;
+            }
+
+            yield return new WaitForSeconds(ultRate / 2);
+            playerStatus.curMP -= 1;
             AttackUlt();
         }
     }
@@ -180,10 +186,10 @@ public class PlayerControl: MonoBehaviour
             Debug.LogError("Attack point is not assigned!");
             return;
         }
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, 0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyManager>().TakeDamage(attackDamageUlt);
+            enemy.GetComponent<EnemyManager>().TakeDamageMagic(attackDamageUlt);
         }
     }
 

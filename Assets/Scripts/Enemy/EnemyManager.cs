@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     private Rigidbody2D rb = null;
     private bool rightTleftF = false;
     private bool isScreen = false;
+    private int num = 0;
 
 
     public void TakeDamage(int damage)
@@ -39,6 +40,28 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    public void TakeDamageMagic(int damage)
+    {
+        if(num <= 80)
+        {
+            curHP -= damage;
+            if(num <= 15)
+            {
+                playerStatus.curMP++;
+            }
+            anim.SetBool("hurt", true);
+            if (curHP <= 0)
+            {
+                AudioManager.instance.Play("Destroy");
+                anim.SetBool("dead", true);
+                GetComponent<Collider2D>().enabled = false;
+                this.enabled = false;
+                curHP = 0;
+                playerStatus.curMP++;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +77,7 @@ public class EnemyManager : MonoBehaviour
         {
             isScreen = true;
         }
+        num = Random.Range(1, 100);
     }
 
     // Update is called once per frame

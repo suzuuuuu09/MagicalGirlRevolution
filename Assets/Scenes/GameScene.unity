@@ -964,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f66dd47fcd30b643bfdb37587bff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.11
+  speed: 0
   maxHP: 100
   curHP: 0
   nonVisibleAct: 0
@@ -10952,6 +10952,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerStatus: {fileID: 1934897663}
+  enemyManager: {fileID: 521458948}
 --- !u!114 &1934897663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10967,7 +10968,7 @@ MonoBehaviour:
   maxHP: 6
   curHP: 0
   maxMP: 6
-  curMP: 6
+  curMP: 0
   Lv: 0
   Exp: 10
   LvUpExp: 20

@@ -21,7 +21,7 @@ public class EnemyHPBar : MonoBehaviour
     }*/
 
     public Slider slider;
-    public EnemyManager enemyManager;
+    public EnemyStatus enemyStatus;
     public UIHue uiHue;
 
     private float value = 1;
@@ -33,13 +33,13 @@ public class EnemyHPBar : MonoBehaviour
 
     void Update()
     {
-        value = (float)enemyManager.curHP / (float)enemyManager.maxHP;
+        value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
         slider.value = value;
-        if(enemyManager.transform.localScale.x > 0)
+        if(enemyStatus.transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
         }
-        if(enemyManager.transform.localScale.x < 0)
+        if(enemyStatus.transform.localScale.x < 0)
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
         }

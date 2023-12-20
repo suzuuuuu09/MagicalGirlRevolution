@@ -30,7 +30,7 @@ public class PlayerControl: MonoBehaviour
     public int recoveryRate;
     [Space(40)]
     public PlayerStatus playerStatus;
-    public EnemyManager enemyManager;
+    public EnemyStatus enemyStatus;
 
 
     private Rigidbody2D rb = null;
@@ -158,11 +158,11 @@ public class PlayerControl: MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointProx.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyManager>().TakeDamage(attackDamage);
+            enemy.GetComponent<EnemyStatus>().TakeDamage(attackDamage);
         }
     }
 
-
+    
     IEnumerator Attack_ult()
     {
         yield return new WaitForSeconds(ultRate);
@@ -194,11 +194,11 @@ public class PlayerControl: MonoBehaviour
             Debug.LogError("Attack point is not assigned!");
             return;
         }
-        CinemachineShake.instance.ShakeCamera(2f, .1f);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, 0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyManager>().TakeDamageMagic(attackDamageUlt, hitRate, recoveryRate);
+            CinemachineShake.instance.ShakeCamera(5f, .1f);
+            enemy.GetComponent<EnemyStatus>().TakeDamageMagic(attackDamageUlt, hitRate, recoveryRate);
         }
     }
 

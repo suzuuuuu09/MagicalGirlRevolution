@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7391980601642500816
+--- !u!1 &5439217976467957729
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7673685135990692921}
-  - component: {fileID: 2489824335782250697}
+  - component: {fileID: 5878153853403187285}
+  - component: {fileID: 4251647459158077432}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7673685135990692921
+--- !u!4 &5878153853403187285
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7391980601642500816}
+  m_GameObject: {fileID: 5439217976467957729}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2489824335782250697
+--- !u!114 &4251647459158077432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7391980601642500816}
+  m_GameObject: {fileID: 5439217976467957729}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ec1948713f068443890acc767102743, type: 3}
@@ -46,8 +46,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: bgm
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    type: 0
+    clip: {fileID: 8300000, guid: 982b9ce5619244244b3cf07caa1ccd93, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isSaved: 1
+    savedTime: 0
+  - name: LvUP
+    type: 1
+    clip: {fileID: 8300000, guid: 48f000c76355572499cb8417f20ba6e1, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Jump
+    type: 1
+    clip: {fileID: 8300000, guid: 0e35d669f7c2e184dab7a569d5e6d5ca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Attack_prox
+    type: 1
+    clip: {fileID: 8300000, guid: cd9af5cab5d893843aa3f9d3808a79ec, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: PlayerDamage
+    type: 1
+    clip: {fileID: 8300000, guid: 2b39a1bdcce9e0f4ba0543d779553b9c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Destroy
+    type: 1
+    clip: {fileID: 8300000, guid: a96ef3455a27aa24a85d7f4d3831b762, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Ult
+    type: 1
+    clip: {fileID: 8300000, guid: 7ecfc623914641a4d82eb908c5a5444a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Ult_duration
+    type: 1
+    clip: {fileID: 8300000, guid: f62d4c02c913c4247b9edfa59f601063, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isSaved: 0
+    savedTime: 0

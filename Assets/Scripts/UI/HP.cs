@@ -18,16 +18,19 @@ public class HP : MonoBehaviour
     public void DrawHearts()
     {
         ClearHearts();
-        float maxHP_remainder = playerStatus.maxHP % 2;
-        int heartsToMake = (int)((playerStatus.maxHP / 2) + maxHP_remainder);
+        float maxHP_remainder = playerStatus.maxHP % 20;
+        int _maxHP_remainder = (int)Mathf.Clamp01(maxHP_remainder);
+        int heartsToMake = (int)((playerStatus.maxHP / 20) + _maxHP_remainder);
         for(int i = 0; i < heartsToMake; i++)
         {
             CreateEmptyHeart();
         }
 
-        for(int i = 0;i < hearts.Count; i++) 
+        for(int i = 0; i < hearts.Count; i++) 
         {
-            int heartStatusRemainder = (int)Mathf.Clamp(playerStatus.curHP - (i * 2), 0, 2);
+            print(hearts.Count);
+            //int heartStatusRemainder = (int)Mathf.Clamp(playerStatus.curHP - (i * 20), 0, 2);
+            int heartStatusRemainder = (int)Mathf.Lerp(0, 1, playerStatus.curHP - (i * 20));
             hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
         }
     }

@@ -28,10 +28,11 @@ public class HP : MonoBehaviour
 
         for(int i = 0; i < hearts.Count; i++) 
         {
-            print(hearts.Count);
+            
             //int heartStatusRemainder = (int)Mathf.Clamp(playerStatus.curHP - (i * 20), 0, 2);
-            int heartStatusRemainder = (int)Mathf.Lerp(0, 1, playerStatus.curHP - (i * 20));
+            int heartStatusRemainder = (int)Mathf.Lerp(0, 4, ((float)playerStatus.curHP - (i * 20)) / 20);
             hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
+            print(hearts.Count + "," + heartStatusRemainder + "," + playerStatus.curHP);
         }
     }
 

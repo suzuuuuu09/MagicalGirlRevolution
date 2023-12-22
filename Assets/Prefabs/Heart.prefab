@@ -89,5 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullHeart: {fileID: 21300000, guid: 8d2ea293626614e42bed0387230b0284, type: 3}
+  quarterHeart: {fileID: 21300000, guid: 7e72bcf8d47b39b44b1b9a334cf1ce37, type: 3}
   halfHeart: {fileID: 21300000, guid: 804778929b624974db625328b5d68f0e, type: 3}
+  threeQuartersHeart: {fileID: 21300000, guid: 3f756dd701920554c8a9a8144d9d404f, type: 3}
   emptyHeart: {fileID: 21300000, guid: d8102e8b88df83947b5cc920cac6cb81, type: 3}

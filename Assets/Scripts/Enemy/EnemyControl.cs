@@ -65,12 +65,4 @@ public class EnemyControl : MonoBehaviour
             rb.Sleep();
         }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            anim.SetTrigger("attack");
-        }
-    }
 }

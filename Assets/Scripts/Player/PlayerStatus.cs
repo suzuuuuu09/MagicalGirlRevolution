@@ -75,7 +75,7 @@ public class PlayerStatus : MonoBehaviour
             hp.freq = 8;
             Damage();
             StartCoroutine(Invincible());
-            hp.freq = 1;
+            hp.freq = 0.8f;
         }
     }
 

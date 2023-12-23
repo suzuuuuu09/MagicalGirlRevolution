@@ -28,6 +28,25 @@ public class EnemyStatus : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            anim.SetTrigger("attack");
+        }
+        
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "FallPoint")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     public void TakeDamage(int damage)
     {
         curHP -= damage;

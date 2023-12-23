@@ -8,9 +8,9 @@ public class HP : MonoBehaviour
     public PlayerStatus playerStatus;
     public float amp;
     public float freq;
+    public Vector3 initPos;
     List<HPHeart> hearts = new();
 
-    private Vector3 initPos;
     private Vector3 midPos;
 
     private void Start()

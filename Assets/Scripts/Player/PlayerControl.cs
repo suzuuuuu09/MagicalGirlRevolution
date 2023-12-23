@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl: MonoBehaviour
 {
+    [Header("チェックポイント")]
+    public Transform[] continuePoint;            // 再開位置
     [Header("移動")]
     public float speed = 10;                     // 移動速度
     public float jump_power;                     // ジャンプ力
@@ -24,10 +26,10 @@ public class PlayerControl: MonoBehaviour
     public Vector2 attackPointSize;
     public float ultRate = 1f;                   // MP消費周期
     public float ultTime = 0f;
-    public int attackDamageUlt = 10;
-    public LayerMask enemyLayersUlt;
-    public float hitRate;
-    public float recoveryRate;
+    public int attackDamageUlt = 10;             // 必殺技ダメージ量
+    public LayerMask enemyLayersUlt;             // 敵レイヤー
+    public float hitRate;                        // ヒット確率
+    public float recoveryRate;                   // MP回復確率
     [Space(40)]
     public PlayerStatus playerStatus;
     public EnemyStatus enemyStatus;
@@ -58,6 +60,7 @@ public class PlayerControl: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        transform.position = continuePoint[0].position;
     }
 
 

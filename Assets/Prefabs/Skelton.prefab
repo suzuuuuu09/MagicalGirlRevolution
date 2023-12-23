@@ -526,11 +526,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2940545456556585969}
   - component: {fileID: 5101454285709900716}
+  - component: {fileID: 2826582141719118427}
+  - component: {fileID: 4297143238761530737}
   - component: {fileID: 3919414708923321839}
   - component: {fileID: 5383808095450160785}
   - component: {fileID: 4516000174337233844}
-  - component: {fileID: 2826582141719118427}
-  - component: {fileID: 4297143238761530737}
   - component: {fileID: 5826779617289441834}
   m_Layer: 7
   m_Name: Skelton
@@ -609,6 +609,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2826582141719118427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830250615604586609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f66dd47fcd30b643bfdb37587bff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
+  nonVisibleAct: 0
+  wallCheckR: {fileID: 110368099790769310}
+  wallCheckL: {fileID: 970815710914218349}
+--- !u!114 &4297143238761530737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830250615604586609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a8e2be439913f4e918f5a9473dcf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  curHP: 0
+  playerStatus: {fileID: 0}
 --- !u!50 &3919414708923321839
 Rigidbody2D:
   serializedVersion: 4
@@ -672,37 +703,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2826582141719118427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6830250615604586609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f66dd47fcd30b643bfdb37587bff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: -0.01
-  nonVisibleAct: 0
-  wallCheckR: {fileID: 110368099790769310}
-  wallCheckL: {fileID: 970815710914218349}
---- !u!114 &4297143238761530737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6830250615604586609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a8e2be439913f4e918f5a9473dcf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  curHP: 0
-  playerStatus: {fileID: 0}
 --- !u!70 &5826779617289441834
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

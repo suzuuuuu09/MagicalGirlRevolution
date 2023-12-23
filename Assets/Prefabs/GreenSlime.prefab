@@ -204,10 +204,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4331052449313018536}
   - component: {fileID: 7427100751736337899}
+  - component: {fileID: 4033240428946077596}
   - component: {fileID: 7592189461417986438}
   - component: {fileID: 9135939128898890404}
   - component: {fileID: 5570449815600726542}
-  - component: {fileID: 4033240428946077596}
   m_Layer: 7
   m_Name: GreenSlime
   m_TagString: Enemy
@@ -283,6 +283,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4033240428946077596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942811070464173380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a8e2be439913f4e918f5a9473dcf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 10000
+  curHP: 0
+  playerStatus: {fileID: 0}
 --- !u!95 &7592189461417986438
 Animator:
   serializedVersion: 5
@@ -366,21 +381,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4033240428946077596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2942811070464173380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a8e2be439913f4e918f5a9473dcf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 10000
-  curHP: 0
-  playerStatus: {fileID: 0}
 --- !u!1 &3014378541487676310
 GameObject:
   m_ObjectHideFlags: 0

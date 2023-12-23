@@ -38,7 +38,7 @@ public class UIHue : MonoBehaviour {
 
 	// 色を変える
 	public void ChangeHue(float val = 25){
-		hue += val;
+		hue = val;
 		hue = hue % 360f;
 	}
 }

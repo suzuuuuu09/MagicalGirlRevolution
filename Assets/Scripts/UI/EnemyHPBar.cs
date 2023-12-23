@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,25 +7,12 @@ using UnityEngine.UI;
 
 public class EnemyHPBar : MonoBehaviour
 {
-    /*public float _hueValue = 0;
-    public float hueValue
-    {
-        get
-        {
-            return _hueValue; 
-        }
-        set
-        {
-            _hueValue = value;
-            uiHue.ChangeHue(hueValue);
-        }
-    }*/
-
     public Slider slider;
     public EnemyStatus enemyStatus;
     public UIHue uiHue;
 
     private float value = 1;
+    private float currentValue = 1;
 
     void Start()
     {
@@ -43,6 +31,11 @@ public class EnemyHPBar : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
         }
-        //hueValue = Mathf.Round((1 - slider.value) * 100);
+        if(currentValue > value)
+        {
+            float uihueValue = -100 * value;
+            uiHue.ChangeHue(uihueValue);
+            currentValue = value;
+        }
     }
 }

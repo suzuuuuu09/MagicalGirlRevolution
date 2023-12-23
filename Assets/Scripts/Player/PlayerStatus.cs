@@ -14,11 +14,12 @@ public class PlayerStatus : MonoBehaviour
     public int Lv;                        // レベル
     public int Exp;                       // 経験値
     public int LvUpExp;                   // 必要経験値
-    [Header("Status")]
-    public bool isDead = false;           // 死亡判定
     [Header("無敵")]
     public float damageTime;              // 無敵時間
     public float flashTime;               // 点滅時間
+    [Header("Status")]
+    public float ATK;
+    public bool isDead = false;           // 死亡判定
     [Space(30)]
     public HP hp;
 

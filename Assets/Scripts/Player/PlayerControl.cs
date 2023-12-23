@@ -26,8 +26,8 @@ public class PlayerControl: MonoBehaviour
     public float ultTime = 0f;
     public int attackDamageUlt = 10;
     public LayerMask enemyLayersUlt;
-    public int hitRate;
-    public int recoveryRate;
+    public float hitRate;
+    public float recoveryRate;
     [Space(40)]
     public PlayerStatus playerStatus;
     public EnemyStatus enemyStatus;

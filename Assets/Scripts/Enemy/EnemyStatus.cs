@@ -12,7 +12,20 @@ public class EnemyStatus : MonoBehaviour
 
 
     private Animator anim = null;
-    private int num = 0;
+    private int rateNum = 0;
+
+
+    private void Start()
+    {
+        curHP = maxHP;
+        anim = GetComponent<Animator>();
+    }
+
+
+    private void Update()
+    {
+        rateNum = Random.Range(1, 100);
+    }
 
 
     public void TakeDamage(int damage)
@@ -22,47 +35,35 @@ public class EnemyStatus : MonoBehaviour
         anim.SetBool("hurt", true);
         if (curHP <= 0)
         {
-            AudioManager.instance.Play("Destroy");
-            anim.SetBool("dead", true);
-            GetComponent<Collider2D>().enabled = false;
-            this.enabled = false;
-            curHP = 0;
-            playerStatus.curMP++;
+            Dead();
         }
     }
 
 
-    public void TakeDamageMagic(int damage, int hit, int recovery)
+    public void TakeDamageMagic(int damage, float hitRate, float recoveryRate)
     {
-        if (num <= hit)
+        if (rateNum <= (int)(hitRate * 100))
         {
             curHP -= damage;
-            if (num <= recovery)
+            if (rateNum <= (int)(recoveryRate * hitRate * 100))
             {
                 playerStatus.curMP++;
             }
             anim.SetBool("hurt", true);
             if (curHP <= 0)
             {
-                AudioManager.instance.Play("Destroy");
-                anim.SetBool("dead", true);
-                GetComponent<Collider2D>().enabled = false;
-                this.enabled = false;
-                curHP = 0;
-                playerStatus.curMP++;
+                Dead();
             }
         }
     }
 
-
-    private void Start()
+    private void Dead()
     {
-        curHP = maxHP;
-        anim = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        num = Random.Range(1, 100);
+        AudioManager.instance.Play("Destroy");
+        anim.SetBool("dead", true);
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        curHP = 0;
+        playerStatus.curMP++;
     }
 }

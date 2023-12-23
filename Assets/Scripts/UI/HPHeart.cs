@@ -12,7 +12,7 @@ public class HPHeart : MonoBehaviour
     {
         heartImage = GetComponent<Image>();
     }
-    
+
     public void SetHeartImage(HeartStatus status)
     {
         switch (status)

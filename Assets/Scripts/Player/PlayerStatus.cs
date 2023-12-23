@@ -16,9 +16,11 @@ public class PlayerStatus : MonoBehaviour
     public int LvUpExp;                   // •K—vŒoŒ±’l
     [Header("Status")]
     public bool isDead = false;           // Ž€–S”»’è
-    [Space(30)]
+    [Header("–³“G")]
     public float damageTime;              // –³“GŽžŠÔ
     public float flashTime;               // “_–ÅŽžŠÔ
+    [Space(30)]
+    public HP hp;
 
 
     private Animator anim = null;
@@ -70,8 +72,10 @@ public class PlayerStatus : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
+            hp.freq = 8;
             Damage();
             StartCoroutine(Invincible());
+            hp.freq = 1;
         }
     }
 

@@ -6,14 +6,24 @@ public class HP : MonoBehaviour
 {
     public GameObject heartPrefab;
     public PlayerStatus playerStatus;
+    public float amp;
+    public float freq;
     List<HPHeart> hearts = new();
 
+    private Vector3 initPos;
+    private Vector3 midPos;
+
+    private void Start()
+    {
+        initPos = transform.position;
+    }
 
     private void Update()
     {
+        midPos = transform.position;
         DrawHearts();
+        transform.position = new Vector3(midPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, midPos.z);
     }
-
 
     public void DrawHearts()
     {
@@ -27,12 +37,9 @@ public class HP : MonoBehaviour
         }
 
         for(int i = 0; i < hearts.Count; i++) 
-        {
-            
-            //int heartStatusRemainder = (int)Mathf.Clamp(playerStatus.curHP - (i * 20), 0, 2);
+        {   
             int heartStatusRemainder = (int)Mathf.Lerp(0, 4, ((float)playerStatus.curHP - (i * 20)) / 20);
             hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
-            print(hearts.Count + "," + heartStatusRemainder + "," + playerStatus.curHP);
         }
     }
 

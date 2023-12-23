@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f66dd47fcd30b643bfdb37587bff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.11
+  speed: -0.01
   nonVisibleAct: 0
   wallCheckR: {fileID: 110368099790769310}
   wallCheckL: {fileID: 970815710914218349}

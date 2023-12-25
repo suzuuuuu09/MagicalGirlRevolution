@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5439217976467957729}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -111,6 +111,15 @@ MonoBehaviour:
   - name: Ult_duration
     type: 1
     clip: {fileID: 8300000, guid: f62d4c02c913c4247b9edfa59f601063, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isSaved: 0
+    savedTime: 0
+  - name: GameOver
+    type: 1
+    clip: {fileID: 8300000, guid: 7c72367d56b288540b901644f59bc7c5, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

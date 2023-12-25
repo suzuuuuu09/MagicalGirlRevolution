@@ -7,6 +7,9 @@ public class EnemyStatus : MonoBehaviour
     [Header("ステータス")]
     public int maxHP = 100;        // 最大HP
     public int curHP;              // 現在HP
+    public float LV;               // レベル
+    public float ATK;              // 攻撃力
+    public float DEF;              // 防御力
     [Space(40)]
     public PlayerStatus playerStatus;
 

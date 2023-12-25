@@ -11286,6 +11286,9 @@ MonoBehaviour:
   damageTime: 3
   flashTime: 0.3
   ATK: 0
+  DEF: 0
+  RES: 0
+  KILL: 0
   isDead: 0
   hp: {fileID: 442990854}
 --- !u!1001 &1966463817
@@ -11466,34 +11469,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7c72367d56b288540b901644f59bc7c5, type: 3}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].name
-      value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251647459158077432, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
-      propertyPath: sounds.Array.data[8].volume
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5439217976467957729, guid: 00e7c91a9ac36af46bec0f370b322d5b, type: 3}
       propertyPath: m_Name
       value: AudioManager

@@ -9865,10 +9865,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 1756368529}
-    - target: {fileID: 2826582141719118427, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
-      propertyPath: speed
-      value: -0.02
-      objectReference: {fileID: 0}
     - target: {fileID: 2940545456556585969, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.27
@@ -9920,10 +9916,6 @@ PrefabInstance:
     - target: {fileID: 4966301714877255036, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6026057287955857683, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
-      propertyPath: hue
-      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 6830250615604586609, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
       propertyPath: m_Name
@@ -11289,6 +11281,7 @@ MonoBehaviour:
   DEF: 0
   RES: 0
   KILL: 0
+  COIN: 0
   isDead: 0
   hp: {fileID: 442990854}
 --- !u!1001 &1966463817

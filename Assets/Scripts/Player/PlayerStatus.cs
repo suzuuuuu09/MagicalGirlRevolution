@@ -22,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
     public float DEF;                     // –hŒä—Í
     public float RES;                     // Œø‰Ê’ïR
     public float KILL;                    // “G‚ğE‚µ‚½”
+    public float COIN;                    // ƒRƒCƒ“
     public bool isDead = false;           // €–S”»’è
     [Space(30)]
     public HP hp;

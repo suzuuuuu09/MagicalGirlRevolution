@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("bgm");
+        //Play("bgm");
     }
 
     private void Awake()
@@ -36,6 +37,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void ToggleSavePosition(string name)
@@ -94,6 +96,11 @@ public class AudioManager : MonoBehaviour
             Stop(s.name);
         }
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Play(scene.name); // ロードされたシーンに基づいてBGMを変更
+    }
 }
 
 // Sound class
@@ -101,12 +108,12 @@ public class AudioManager : MonoBehaviour
 public class Sound
 {
     public string name;
-    public enum audioType
+    public enum AudioType
     {
         BGM,
         SE
     }
-    public audioType type;
+    public AudioType type;
     public AudioClip clip;
 
     [Range(0, 1f)]

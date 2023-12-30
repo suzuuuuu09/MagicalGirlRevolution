@@ -18,11 +18,11 @@ public class PlayerStatus : MonoBehaviour
     public float damageTime;              // –³“GŠÔ
     public float flashTime;               // “_–ÅŠÔ
     [Header("Status")]
-    public float ATK;                     // UŒ‚—Í
-    public float DEF;                     // –hŒä—Í
-    public float RES;                     // Œø‰Ê’ïR
-    public float KILL;                    // “G‚ğE‚µ‚½”
-    public float COIN;                    // ƒRƒCƒ“
+    public int ATK;                     // UŒ‚—Í
+    public int DEF;                     // –hŒä—Í
+    public int RES;                     // Œø‰Ê’ïR
+    public int KILL;                    // “G‚ğE‚µ‚½”
+    public int COIN;                    // ƒRƒCƒ“
     public bool isDead = false;           // €–S”»’è
     [Space(30)]
     public HP hp;

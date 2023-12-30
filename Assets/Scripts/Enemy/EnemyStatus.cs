@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    [Header("ステータス")]
-    public int maxHP = 100;        // 最大HP
-    public int curHP;              // 現在HP
-    public float LV;               // レベル
-    public float ATK;              // 攻撃力
-    public float DEF;              // 防御力
+    [Header("Status")]
+    public int maxHP;                         // 最大HP
+    public int curHP;                         // 現在HP
+    public int LV;                            // レベル
+    public int ATK;                           // 攻撃力
+    public int DEF;                           // 防御力
+    [Header("KnockBack")]
+    public float knockbackForce;
     [Space(40)]
     public PlayerStatus playerStatus;
 
 
     private Animator anim = null;
+    private Rigidbody2D rb = null;
     private int rateNum = 0;
 
 
@@ -22,6 +25,7 @@ public class EnemyStatus : MonoBehaviour
     {
         curHP = maxHP;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 

@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Play(scene.name); // ロードされたシーンに基づいてBGMを変更
+        Play("bgm_" + scene.name); // ロードされたシーンに基づいてBGMを変更
     }
 
     public void ChangeBGMVolume(float newVolume)

@@ -91,7 +91,7 @@ public class PlayerStatus : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             curHP--;
-            CinemachineShake.instance.ShakeCamera(5f, .1f);
+            CinemachineShake.instance.ShakeCamera(5f, 0.1f);
             if (curHP <= 0)
             {
                 anim.SetTrigger("dead");

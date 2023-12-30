@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -40,9 +41,9 @@ public class PlayerControl: MonoBehaviour
     private bool head_check = false;
     private bool ground_check = false;
     private bool isJump = false;
-    private bool isUlt = false;
     private float nextAttackTime = 0f;
     private float nextUltTime = 0f;
+    private bool isUlt = false;
 
 
     void Start()
@@ -134,7 +135,6 @@ public class PlayerControl: MonoBehaviour
             {
                 isJump = false;
             }
-
             anim.SetBool("jump", isJump);
             anim.SetBool("ground", ground_check);
         }
@@ -178,7 +178,7 @@ public class PlayerControl: MonoBehaviour
             }
 
             yield return new WaitForSeconds(ultRate / 2);
-            playerStatus.curMP -= 1;
+            playerStatus.curMP--;
             AttackUlt();
         }
     }
@@ -211,18 +211,6 @@ public class PlayerControl: MonoBehaviour
     }
 
 
-    private void StartToMiddle()
-    {
-        anim.SetTrigger("atck_ult_middle");
-    }
-
-
-    private void UltEnd()
-    {
-        anim.ResetTrigger("atck_ult_end");
-    }
-
-
     private void OnDrawGizmosSelected()
     {
         if(attackPointProx == null)
@@ -237,5 +225,19 @@ public class PlayerControl: MonoBehaviour
         Gizmos.DrawWireCube(attackPointUlt.position, 
             new Vector3(attackPointSize.x, attackPointSize.y));
     }
+
+
+    private void StartToMiddle()
+    {
+        anim.SetTrigger("atck_ult_middle");
+    }
+
+
+    private void UltEnd()
+    {
+        anim.ResetTrigger("atck_ult_end");
+    }
+
+
 }
 

@@ -17,7 +17,6 @@ public class BattleManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         DontDestroyOnLoad(gameObject);
     }
 }

@@ -22,10 +22,10 @@ public class PlayerControl: MonoBehaviour
     public float attackRate = 2f;                // UŒ‚Š„‡
     public LayerMask enemyLayers;                // “GƒŒƒCƒ„[
     [Header("•KŽE‹Z")]
-    public Transform attackPointUlt;             // •KŽE‹ZUŒ‚”ÍˆÍ
-    public Vector2 attackPointSize;
+    public Transform attackPointUlt;             // •KŽE‹ZUŒ‚êŠ
+    public Vector2 attackPointSize;              // •KŽE‹ZUŒ‚”ÍˆÍ
     public float ultRate = 1f;                   // MPÁ”ïŽüŠú
-    public float ultTime = 0f;
+    public float ulkCoolDownTime;                // •KŽE‹ZƒN[ƒ‹ƒ^ƒCƒ€
     public int attackDamageUlt = 10;             // •KŽE‹Zƒ_ƒ[ƒW—Ê
     public LayerMask enemyLayersUlt;             // “GƒŒƒCƒ„[
     public float hitRate;                        // ƒqƒbƒgŠm—¦
@@ -42,18 +42,7 @@ public class PlayerControl: MonoBehaviour
     private bool isJump = false;
     private bool isUlt = false;
     private float nextAttackTime = 0f;
-
-
-    public void StartToMiddle()
-    {
-        anim.SetTrigger("atck_ult_middle");
-    }
-
-
-    public void UltEnd()
-    {
-        anim.ResetTrigger("atck_ult_end");
-    }
+    private float nextUltTime = 0f;
 
 
     void Start()
@@ -66,34 +55,38 @@ public class PlayerControl: MonoBehaviour
 
     private void Update()
     {
-        // ‹ßÚUŒ‚
-        if (Time.time >= nextAttackTime && !playerStatus.isDead && Input.GetKeyDown(KeyCode.Z))
+        if (!playerStatus.isDead)
         {
-            Attack_prox();
-            nextAttackTime = Time.time + 1f / attackRate;
-        }
+            // ‹ßÚUŒ‚
+            if (Time.time >= nextAttackTime && Input.GetKeyDown(KeyCode.Z))
+            {
+                Attack_prox();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         
-        // •KŽE‹Z
-        if(Input.GetKeyDown(KeyCode.LeftShift) && playerStatus.curMP >= 2)
-        {
-            isUlt = true;
-            playerStatus.curMP -= 2;
-            AudioManager.instance.Play("Ult");
-            anim.SetTrigger("atck_ult_start");
-            StartCoroutine(Attack_ult());
+            // •KŽE‹Z
+            if (playerStatus.curMP >= 2 && Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextUltTime)
+            {
+                nextUltTime = Time.time + ulkCoolDownTime;
+                isUlt = true;
+                playerStatus.curMP -= 2;
+                AudioManager.instance.Play("Ult");
+                anim.SetTrigger("atck_ult_start");
+                StartCoroutine(Attack_ult());
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || playerStatus.curMP <= 0)
+            {
+                isUlt = false;
+                StopCoroutine(Attack_ult());
+                anim.SetTrigger("atck_ult_end");
+            }
+            /*
+            if (Input.GetKeyDown(KeyCode.LeftControl) && ground_check)
+            {
+                anim.SetBool("roll", true);
+            }
+            */
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || playerStatus.curMP <= 0)
-        {
-            isUlt = false;
-            StopCoroutine(Attack_ult());
-            anim.SetTrigger("atck_ult_end");
-        }
-        /*
-        if (Input.GetKeyDown(KeyCode.LeftControl) && ground_check)
-        {
-            anim.SetBool("roll", true);
-        }
-        */
     }
 
 
@@ -158,7 +151,8 @@ public class PlayerControl: MonoBehaviour
         CinemachineShake.instance.ShakeCamera(2f, .1f);
         anim.SetTrigger("atck_prox");
         AudioManager.instance.Play("Attack_prox");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointProx.position, attackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
+            attackPointProx.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyStatus>().TakeDamage(attackDamage);
@@ -197,11 +191,13 @@ public class PlayerControl: MonoBehaviour
             Debug.LogError("Attack point is not assigned!");
             return;
         }
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPointUlt.position, attackPointSize, 0, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(
+            attackPointUlt.position, attackPointSize, 0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
             CinemachineShake.instance.ShakeCamera(5f, .1f);
-            enemy.GetComponent<EnemyStatus>().TakeDamageMagic(attackDamageUlt, hitRate, recoveryRate);
+            enemy.GetComponent<EnemyStatus>().TakeDamageMagic(
+                attackDamageUlt, hitRate, recoveryRate);
         }
     }
 
@@ -212,6 +208,18 @@ public class PlayerControl: MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jump_power);
         ground_check = false;
         isJump = true;
+    }
+
+
+    private void StartToMiddle()
+    {
+        anim.SetTrigger("atck_ult_middle");
+    }
+
+
+    private void UltEnd()
+    {
+        anim.ResetTrigger("atck_ult_end");
     }
 
 
@@ -226,7 +234,8 @@ public class PlayerControl: MonoBehaviour
         {
             return;
         }
-        Gizmos.DrawWireCube(attackPointUlt.position, new Vector3(attackPointSize.x, attackPointSize.y));
+        Gizmos.DrawWireCube(attackPointUlt.position, 
+            new Vector3(attackPointSize.x, attackPointSize.y));
     }
 }
 

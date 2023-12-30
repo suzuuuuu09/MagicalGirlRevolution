@@ -9,11 +9,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    private void Start()
-    {
-        //Play("bgm");
-    }
-
     private void Awake()
     {
         if (instance == null)
@@ -100,6 +95,34 @@ public class AudioManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Play(scene.name); // ロードされたシーンに基づいてBGMを変更
+    }
+
+    public void ChangeBGMVolume(float newVolume)
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.type == Sound.AudioType.BGM)
+            {
+                s.volume = Mathf.Clamp01(newVolume);
+                s.source.volume = s.volume;
+            }
+        }
+
+        Debug.Log("Change BGM for volume: " + newVolume);
+    }
+
+    public void ChangeSEVolume(float newVolume)
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.type == Sound.AudioType.SE)
+            {
+                s.volume = Mathf.Clamp01(newVolume);
+                s.source.volume = s.volume;
+            }
+        }
+
+        Debug.Log("Change SE for volume: " + newVolume);
     }
 }
 

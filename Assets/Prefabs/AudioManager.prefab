@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Stage_1
     type: 0
-    clip: {fileID: 8300000, guid: 982b9ce5619244244b3cf07caa1ccd93, type: 3}
+    clip: {fileID: 8300000, guid: 48ee6f1f116de184e90cde61f82c3816, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
     isSaved: 0
     savedTime: 0
   - name: Title
-    type: 1
+    type: 0
     clip: {fileID: 8300000, guid: d3cc9a93300acf148a6c84ef17ff9323, type: 3}
     volume: 1
     pitch: 1

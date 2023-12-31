@@ -18,14 +18,14 @@ public class PlayerStatus : MonoBehaviour
     public float damageTime;              // –³“GŠÔ
     public float flashTime;               // “_–ÅŠÔ
     [Header("Status")]
-    public int ATK;                     // UŒ‚—Í
-    public int DEF;                     // –hŒä—Í
-    public int RES;                     // Œø‰Ê’ïR
-    public int KILL;                    // “G‚ğE‚µ‚½”
-    public int COIN;                    // ƒRƒCƒ“
+    public int ATK;                       // UŒ‚—Í
+    public int DEF;                       // –hŒä—Í
+    public int RES;                       // Œø‰Ê’ïR
+    public int KILL;                      // “G‚ğE‚µ‚½”
+    public int COIN;                      // ƒRƒCƒ“
     public bool isDead = false;           // €–S”»’è
     [Header("ParticleEffect")]
-    public ParticleSystem damageParticle;
+    public ParticleSystem damageParticle; // ƒ_ƒ[ƒWƒGƒtƒFƒNƒg
     [Space(30)]
     public HP hp;
 

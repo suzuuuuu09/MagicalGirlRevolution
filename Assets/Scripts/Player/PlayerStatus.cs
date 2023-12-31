@@ -24,6 +24,8 @@ public class PlayerStatus : MonoBehaviour
     public int KILL;                    // “G‚ğE‚µ‚½”
     public int COIN;                    // ƒRƒCƒ“
     public bool isDead = false;           // €–S”»’è
+    [Header("ParticleEffect")]
+    public ParticleSystem damageParticle;
     [Space(30)]
     public HP hp;
 
@@ -89,6 +91,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (!isDead)
         {
+            damageParticle.Play();
             anim.SetTrigger("hurt");
             curHP--;
             CinemachineShake.instance.ShakeCamera(5f, 0.1f);

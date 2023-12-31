@@ -94,6 +94,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StopAll();
         Play("bgm_" + scene.name);
     }
 

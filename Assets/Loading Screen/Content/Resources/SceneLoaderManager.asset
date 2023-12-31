@@ -47,8 +47,8 @@ MonoBehaviour:
     DisplayName: Stage_1
     Description: 
     SkipType: 3
-    LoadingType: 0
-    FakeLoadingTime: 2
+    LoadingType: 1
+    FakeLoadingTime: 3.5
     Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game

@@ -233,7 +233,7 @@ public class PlayerControl: MonoBehaviour
     }
 
 
-    private void UltEnd()
+    private void ResetUltEnd()
     {
         anim.ResetTrigger("atck_ult_end");
     }

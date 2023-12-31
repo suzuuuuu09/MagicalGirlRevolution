@@ -90,7 +90,7 @@ MonoBehaviour:
     loop: 0
     isSaved: 0
     savedTime: 0
-  - name: PlayerDamage
+  - name: Player_Damage
     type: 1
     clip: {fileID: 8300000, guid: 2b39a1bdcce9e0f4ba0543d779553b9c, type: 3}
     volume: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
     loop: 0
     isSaved: 0
     savedTime: 0
-  - name: Destroy
+  - name: Enemy_Dead
     type: 1
     clip: {fileID: 8300000, guid: a96ef3455a27aa24a85d7f4d3831b762, type: 3}
     volume: 1
@@ -129,6 +129,15 @@ MonoBehaviour:
   - name: GameOver
     type: 1
     clip: {fileID: 8300000, guid: 7c72367d56b288540b901644f59bc7c5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isSaved: 0
+    savedTime: 0
+  - name: Enemy_Damage
+    type: 1
+    clip: {fileID: 8300000, guid: 83dbbb7d23bf1ec4790b868946e0d20b, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

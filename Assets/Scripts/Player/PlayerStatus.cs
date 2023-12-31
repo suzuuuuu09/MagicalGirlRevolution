@@ -70,6 +70,7 @@ public class PlayerStatus : MonoBehaviour
             float _LvUpExp = (float)LvUpExp * 1.2f;
             LvUpExp = (int)_LvUpExp;
             Lv++;
+            AudioManager.instance.Play("LvUP");
         }
     }
 
@@ -79,10 +80,8 @@ public class PlayerStatus : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
-            hp.freq = 8;
             Damage();
             StartCoroutine(Invincible());
-            hp.freq = 0.8f;
         }
     }
 

@@ -6,23 +6,14 @@ public class HP : MonoBehaviour
 {
     public GameObject heartPrefab;
     public PlayerStatus playerStatus;
-    public float amp;
-    public float freq;
-    public Vector3 initPos;
     List<HPHeart> hearts = new();
 
     private Vector3 midPos;
 
-    private void Start()
-    {
-        initPos = transform.position;
-    }
 
     private void Update()
     {
-        midPos = transform.position;
         DrawHearts();
-        transform.position = new Vector3(midPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, midPos.z);
     }
 
     public void DrawHearts()

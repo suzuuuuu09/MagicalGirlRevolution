@@ -10,8 +10,8 @@ public class EnemyStatus : MonoBehaviour
     public int LV;                            // レベル
     public int ATK;                           // 攻撃力
     public int DEF;                           // 防御力
-    [Header("KnockBack")]
-    public float knockbackForce;
+    [Header("ParticleEffect")]
+    public ParticleSystem damageParticle;     // ダメージエフェクト
     [Space(40)]
     public PlayerStatus playerStatus;
 
@@ -59,6 +59,7 @@ public class EnemyStatus : MonoBehaviour
         curHP -= damage;
         playerStatus.curMP++;
         anim.SetBool("hurt", true);
+        damageParticle.Play();
         if (curHP <= 0)
         {
             Dead();
@@ -75,6 +76,7 @@ public class EnemyStatus : MonoBehaviour
         if (rateNum <= (int)(hitRate * 100))
         {
             curHP -= damage;
+            damageParticle.Play();
             if (rateNum <= (int)(recoveryRate * hitRate * 100))
             {
                 playerStatus.curMP++;

@@ -63,6 +63,10 @@ public class EnemyStatus : MonoBehaviour
         {
             Dead();
         }
+        else
+        {
+            AudioManager.instance.Play("Enemy_Damage");
+        }
     }
 
 
@@ -80,12 +84,16 @@ public class EnemyStatus : MonoBehaviour
             {
                 Dead();
             }
+            else
+            {
+                AudioManager.instance.Play("Enemy_Damage");
+            }
         }
     }
 
     private void Dead()
     {
-        AudioManager.instance.Play("Destroy");
+        AudioManager.instance.Play("Enemy_Dead");
         anim.SetBool("dead", true);
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;

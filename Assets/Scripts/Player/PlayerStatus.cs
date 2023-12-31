@@ -102,7 +102,7 @@ public class PlayerStatus : MonoBehaviour
             }
             else
             {
-                AudioManager.instance.Play("PlayerDamage");
+                AudioManager.instance.Play("Player_Damage");
             }
         }
     }

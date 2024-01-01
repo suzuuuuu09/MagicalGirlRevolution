@@ -63,6 +63,15 @@ MonoBehaviour:
     loop: 1
     isSaved: 0
     savedTime: 0
+  - name: bgm_Tutorial
+    type: 0
+    clip: {fileID: 8300000, guid: 0cb3ae63a9860914b9f973b3b0eeb846, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isSaved: 0
+    savedTime: 0
   - name: LvUP
     type: 1
     clip: {fileID: 8300000, guid: 48f000c76355572499cb8417f20ba6e1, type: 3}

@@ -13,7 +13,6 @@ public class EnemyHPBar : MonoBehaviour
     public UIHue uiHue;
 
     private float value = 1;
-    private float currentValue = 1;
 
     void Start()
     {
@@ -23,6 +22,8 @@ public class EnemyHPBar : MonoBehaviour
     void Update()
     {
         value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
+        print(value);
+        ChangeBarColor();
         slider.value = value;
         if(enemyStatus.transform.localScale.x > 0)
         {
@@ -32,11 +33,38 @@ public class EnemyHPBar : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
         }
-        if(currentValue > value)
+    }
+
+
+    void ChangeBarColor()
+    {
+        if(value > 0.75f) 
         {
-            float uihueValue = -100 * value;
-            uiHue.ChangeHue(uihueValue);
-            currentValue = value;
+            uiHue.ChangeHue(240);
+        }
+        else if(value > 0.625f)
+        {
+            uiHue.ChangeHue(260);
+        }
+        else if (value > 0.5f)
+        {
+            uiHue.ChangeHue(280);
+        }
+        else if(value > 0.375f)
+        {
+            uiHue.ChangeHue(300);
+        }
+        else if (value > 0.25f)
+        {
+            uiHue.ChangeHue(320);
+        }
+        else if(value > 0.125f)
+        {
+            uiHue.ChangeHue(340);
+        }
+        else if (value > 0)
+        {
+            uiHue.ChangeHue(360);
         }
     }
 }

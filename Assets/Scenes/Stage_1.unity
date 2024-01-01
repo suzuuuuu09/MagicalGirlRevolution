@@ -8156,6 +8156,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5689710123434296967, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
+      propertyPath: hue
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 6733649702365449649, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_Material
       value: 
@@ -13169,6 +13173,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6026057287955857683, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
+      propertyPath: hue
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 6830250615604586609, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
       propertyPath: m_Name
       value: Skelton
@@ -13376,7 +13384,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Hue: 260
+    - _Hue: 240
     - _Sat: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -13449,7 +13457,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Hue: 260
+    - _Hue: 240
     - _Sat: 1
     - _Stencil: 0
     - _StencilComp: 8

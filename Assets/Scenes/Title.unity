@@ -235,6 +235,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8700920060436158539, guid: 010d95610c805ab459f5741c7e437f7b, type: 3}
+      propertyPath: FinishSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700920060436158539, guid: 010d95610c805ab459f5741c7e437f7b, type: 3}
+      propertyPath: BackgroundAudio
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8700920060445833959, guid: 010d95610c805ab459f5741c7e437f7b, type: 3}
       propertyPath: m_Name
       value: SceneLoader 16
@@ -802,7 +810,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage_1
+          m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2133598688

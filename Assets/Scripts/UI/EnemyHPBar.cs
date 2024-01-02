@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class EnemyHPBar : MonoBehaviour
 {
-    public Slider slider;
+    public Slider hpSlider;
     public EnemyStatus enemyStatus;
     public UIHue uiHue;
 
@@ -16,7 +16,7 @@ public class EnemyHPBar : MonoBehaviour
 
     void Start()
     {
-        slider.value = 1f;
+        hpSlider.value = 1f;
     }
 
     void Update()
@@ -24,47 +24,31 @@ public class EnemyHPBar : MonoBehaviour
         value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
         print(value);
         ChangeBarColor();
-        slider.value = value;
-        if(enemyStatus.transform.localScale.x > 0)
+        hpSlider.value = value;
+        ScaleWithoutInfluence();
+    }
+
+
+    private void ScaleWithoutInfluence()
+    {
+        if (enemyStatus.transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
         }
-        if(enemyStatus.transform.localScale.x < 0)
+        if (enemyStatus.transform.localScale.x < 0)
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
         }
     }
 
 
-    void ChangeBarColor()
+    private void ChangeBarColor()
     {
-        if(value > 0.75f) 
+        float hueValue = 240;
+        if(hueValue < 360)
         {
-            uiHue.ChangeHue(240);
-        }
-        else if(value > 0.625f)
-        {
-            uiHue.ChangeHue(260);
-        }
-        else if (value > 0.5f)
-        {
-            uiHue.ChangeHue(280);
-        }
-        else if(value > 0.375f)
-        {
-            uiHue.ChangeHue(300);
-        }
-        else if (value > 0.25f)
-        {
-            uiHue.ChangeHue(320);
-        }
-        else if(value > 0.125f)
-        {
-            uiHue.ChangeHue(340);
-        }
-        else if (value > 0)
-        {
-            uiHue.ChangeHue(360);
+            hueValue = -170 * value + 410;
+            uiHue.ChangeHue(hueValue);
         }
     }
 }

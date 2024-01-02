@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 5342830082644790025}
+  hpSlider: {fileID: 5342830082644790025}
   enemyStatus: {fileID: 4297143238761530737}
   uiHue: {fileID: 6026057287955857683}
 --- !u!1 &6830250615604586609
@@ -5661,4 +5661,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe8ac9ef2fb14f058c4aec61f3cebcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 260
+  hue: 240

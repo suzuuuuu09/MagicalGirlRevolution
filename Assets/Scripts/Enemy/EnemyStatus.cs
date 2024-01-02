@@ -32,6 +32,10 @@ public class EnemyStatus : MonoBehaviour
     private void Update()
     {
         rateNum = Random.Range(1, 100);
+        if(curHP > maxHP)
+        {
+            curHP = maxHP;
+        }
     }
 
 

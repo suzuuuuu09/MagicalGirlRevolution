@@ -22,7 +22,6 @@ public class EnemyHPBar : MonoBehaviour
     void Update()
     {
         value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
-        print(value);
         ChangeBarColor();
         hpSlider.value = value;
         ScaleWithoutInfluence();

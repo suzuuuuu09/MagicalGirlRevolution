@@ -12,7 +12,7 @@ public class PlayerControl: MonoBehaviour
     public Transform[] continuePoint;            // 再開位置
     [Header("移動")]
     public float speed = 10;                     // 移動速度
-    public float jump_power;                     // ジャンプ力
+    public float jumpPower;                     // ジャンプ力
     [Header("判定")]
     public GroundCheck ground;                   // 地面接触判定
     public HeadCheck head;                       // 頭接触判定
@@ -38,8 +38,8 @@ public class PlayerControl: MonoBehaviour
 
     private Rigidbody2D rb = null;
     private Animator anim = null;
-    private bool head_check = false;
-    private bool ground_check = false;
+    private bool headCheck = false;
+    private bool groundCheck = false;
     private bool isJump = false;
     private float nextAttackTime = 0f;
     private float nextUltTime = 0f;
@@ -81,22 +81,16 @@ public class PlayerControl: MonoBehaviour
                 StopCoroutine(Attack_ult());
                 anim.SetTrigger("atck_ult_end");
             }
-            /*
-            if (Input.GetKeyDown(KeyCode.LeftControl) && ground_check)
-            {
-                anim.SetBool("roll", true);
-            }
-            */
         }
     }
 
 
     void FixedUpdate()
     {
-        if (!playerStatus.isDead)
+        groundCheck = ground.IsGround();
+        headCheck = head.IsGround();
+        if (!playerStatus.isDead && !playerStatus.isKnockback)
         {
-            ground_check = ground.IsGround();
-            head_check = head.IsGround();
             float horizontalKey = Input.GetAxisRaw("Horizontal");
             float verticalKey = Input.GetAxisRaw("Vertical");
             anim.SetBool("run", false);
@@ -127,7 +121,7 @@ public class PlayerControl: MonoBehaviour
             }
 
             // ジャンプ
-            if (ground_check && !head_check && verticalKey > 0)
+            if (groundCheck && !headCheck && verticalKey > 0)
             {
                 Jump();
             }
@@ -136,7 +130,11 @@ public class PlayerControl: MonoBehaviour
                 isJump = false;
             }
             anim.SetBool("jump", isJump);
-            anim.SetBool("ground", ground_check);
+            anim.SetBool("ground", groundCheck);
+        }
+        else if(!playerStatus.isDead && playerStatus.isKnockback)
+        {
+            Knockback();
         }
     }
 
@@ -205,9 +203,27 @@ public class PlayerControl: MonoBehaviour
     private void Jump()
     {
         AudioManager.instance.Play("Jump");
-        rb.velocity = new Vector2(rb.velocity.x, jump_power);
-        ground_check = false;
+        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        groundCheck = false;
         isJump = true;
+    }
+
+
+    private void Knockback()
+    {
+        groundCheck = false;
+        float knockbackForce = playerStatus.knockbackForce;
+        bool isKnockbackFromRight = playerStatus.isKnockbackFromRight;
+        if (isKnockbackFromRight)
+        {
+            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+        }
+        else if (!isKnockbackFromRight)
+        {
+            rb.velocity = new Vector2(knockbackForce, knockbackForce);
+        }
+        anim.SetBool("jump", isJump);
+        anim.SetBool("ground", groundCheck);
     }
 
 

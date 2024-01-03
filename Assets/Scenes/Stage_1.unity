@@ -9282,6 +9282,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1392257382806323347, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: jumpPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392257382806323347, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
       propertyPath: enemyStatus
       value: 
       objectReference: {fileID: 2036469668}
@@ -9293,6 +9297,18 @@ PrefabInstance:
       propertyPath: hp
       value: 
       objectReference: {fileID: 442990854}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: isKnockback
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: knockbackTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: knockbackForce
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4476029966824545724, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9337,6 +9353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131076332621747419, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: playerStatus
+      value: 
+      objectReference: {fileID: 1934897663}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

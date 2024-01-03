@@ -14,9 +14,11 @@ public class PlayerStatus : MonoBehaviour
     public int Lv;                        // レベル
     public int Exp;                       // 経験値
     public int LvUpExp;                   // 必要経験値
-    [Header("無敵")]
-    public float damageTime;              // 無敵時間
-    public float flashTime;               // 点滅時間
+    [Header("KnockBack")]
+    public float knockbackTime;           // ノックバック時間
+    public float knockbackForce;          // ノックバック力
+    public bool isKnockback;              // ノックバック判定
+    public bool isKnockbackFromRight;     // ノックバック向き判定
     [Header("Status")]
     public int ATK;                       // 攻撃力
     public int DEF;                       // 防御力
@@ -79,9 +81,10 @@ public class PlayerStatus : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
+            //gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
             Damage();
-            StartCoroutine(Invincible());
+            StartCoroutine(Knockback());
+            //StartCoroutine(Invincible());
         }
     }
 
@@ -106,22 +109,13 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    IEnumerator Invincible()
+
+    IEnumerator Knockback()
     {
-        if (!isDead)
-        {
-            Color color = spriteRenderer.color;
-            for (int i = 0; i < damageTime; i++)
-            {
-                yield return new WaitForSeconds(flashTime);
-                spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
-
-                yield return new WaitForSeconds(flashTime);
-                spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
-            }
-            spriteRenderer.color = color;
-            gameObject.layer = LayerMask.NameToLayer("Player");
-        }
+        isKnockback = true;
+        
+        yield return new WaitForSeconds(knockbackTime);
+        
+        isKnockback = false;
     }
-
 }

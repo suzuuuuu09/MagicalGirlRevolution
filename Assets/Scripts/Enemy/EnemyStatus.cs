@@ -44,6 +44,14 @@ public class EnemyStatus : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             anim.SetTrigger("attack");
+            if(collision.transform.position.x < transform.position.x)
+            {
+                playerStatus.isKnockbackFromRight = true;
+            }
+            if (collision.transform.position.x > transform.position.x)
+            {
+                playerStatus.isKnockbackFromRight = false;
+            }
         }
         
     }

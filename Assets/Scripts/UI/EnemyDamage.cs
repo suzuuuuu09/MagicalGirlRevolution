@@ -11,13 +11,6 @@ namespace DamageNumbersPro.Demo
 
         //public Transform target;
         public EnemyStatus enemyStatus;
-        void Update()
-        {
-            if (DNP_InputHandler.GetLeftClick())
-            {
-                SpawnPopup(Mathf.Round(Random.Range(1, 10)));
-            }
-        }
 
 
         public void SpawnPopup(float number)

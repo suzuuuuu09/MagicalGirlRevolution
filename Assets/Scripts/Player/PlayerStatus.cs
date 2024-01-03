@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Com.LuisPedroFonseca.ProCamera2D;
+
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -96,7 +98,7 @@ public class PlayerStatus : MonoBehaviour
             damageParticle.Play();
             anim.SetTrigger("hurt");
             curHP--;
-            CinemachineShake.instance.ShakeCamera(5f, 0.1f);
+            ProCamera2DShake.Instance.Shake("PlayerDamage");
             if (curHP <= 0)
             {
                 anim.SetTrigger("dead");

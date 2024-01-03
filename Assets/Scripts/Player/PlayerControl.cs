@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class PlayerControl: MonoBehaviour
 {
@@ -146,7 +147,7 @@ public class PlayerControl: MonoBehaviour
             Debug.LogError("Attack point is not assigned!");
             return;
         }
-        CinemachineShake.instance.ShakeCamera(2f, .1f);
+        ProCamera2DShake.Instance.Shake("AttackProx");
         anim.SetTrigger("atck_prox");
         AudioManager.instance.Play("Attack_prox");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
@@ -193,7 +194,7 @@ public class PlayerControl: MonoBehaviour
             attackPointUlt.position, attackPointSize, 0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            CinemachineShake.instance.ShakeCamera(5f, .1f);
+            ProCamera2DShake.Instance.Shake("AttackUlt");
             enemy.GetComponent<EnemyStatus>().TakeDamageMagic(
                 attackDamageUlt, hitRate, recoveryRate);
         }

@@ -417,8 +417,10 @@ MonoBehaviour:
   Lv: 0
   Exp: 10
   LvUpExp: 20
-  damageTime: 3
-  flashTime: 0.3
+  knockbackTime: 0.2
+  knockbackForce: 7
+  isKnockback: 0
+  isKnockbackFromRight: 0
   ATK: 0
   DEF: 0
   RES: 0
@@ -442,7 +444,7 @@ MonoBehaviour:
   continuePoint:
   - {fileID: 0}
   speed: 7
-  jump_power: 15
+  jumpPower: 15
   ground: {fileID: 5131076332621747419}
   head: {fileID: 6262145741487125958}
   attackPointProx: {fileID: 5821355976745886368}

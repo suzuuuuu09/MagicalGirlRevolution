@@ -13,10 +13,12 @@ public class EnemyControl : MonoBehaviour
     public WallCheckL wallCheckL;  // 壁接触判定左
     
 
+    public static bool rightTleftF = false;
+
+
     private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
-    private bool rightTleftF = false;
     private bool isScreen = false;
 
 

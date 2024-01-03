@@ -47,10 +47,12 @@ public class EnemyStatus : MonoBehaviour
             if(collision.transform.position.x < transform.position.x)
             {
                 playerStatus.isKnockbackFromRight = true;
+                EnemyControl.rightTleftF = false;
             }
             if (collision.transform.position.x > transform.position.x)
             {
                 playerStatus.isKnockbackFromRight = false;
+                EnemyControl.rightTleftF = true;
             }
         }
         

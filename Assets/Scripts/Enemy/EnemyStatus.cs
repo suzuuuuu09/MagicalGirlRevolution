@@ -1,3 +1,4 @@
+using DamageNumbersPro.Demo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class EnemyStatus : MonoBehaviour
     public ParticleSystem damageParticle;     // ダメージエフェクト
     [Space(40)]
     public PlayerStatus playerStatus;
+    public EnemyDamage enemyDamage;
 
 
     private Animator anim = null;
@@ -70,6 +72,7 @@ public class EnemyStatus : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        enemyDamage.SpawnPopup(damage);
         curHP -= damage;
         playerStatus.curMP++;
         anim.SetBool("hurt", true);
@@ -89,6 +92,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if (rateNum <= (int)(hitRate * 100))
         {
+            enemyDamage.SpawnPopup(damage);
             curHP -= damage;
             damageParticle.Play();
             if (rateNum <= (int)(recoveryRate * hitRate * 100))

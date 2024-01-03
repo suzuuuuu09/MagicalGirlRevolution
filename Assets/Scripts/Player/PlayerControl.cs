@@ -212,6 +212,7 @@ public class PlayerControl: MonoBehaviour
     private void Knockback()
     {
         groundCheck = false;
+        isJump = true;
         float knockbackForce = playerStatus.knockbackForce;
         bool isKnockbackFromRight = playerStatus.isKnockbackFromRight;
         if (isKnockbackFromRight)

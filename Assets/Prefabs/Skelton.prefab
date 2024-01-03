@@ -516,6 +516,52 @@ MonoBehaviour:
   hpSlider: {fileID: 5342830082644790025}
   enemyStatus: {fileID: 4297143238761530737}
   uiHue: {fileID: 6026057287955857683}
+--- !u!1 &5702187710978454868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4052854702258596181}
+  - component: {fileID: 2951498463171070249}
+  m_Layer: 0
+  m_Name: EnemyDamageEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4052854702258596181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702187710978454868}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3080003, y: 1.6600001, z: -1.6}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2940545456556585969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2951498463171070249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702187710978454868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e07152123c43e439003b5c47880037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPrefab: {fileID: 1014554872293107106, guid: 5fe03393e048b82468b8643dc539df3a, type: 3}
+  enemyStatus: {fileID: 4297143238761530737}
 --- !u!1 &6830250615604586609
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +602,7 @@ Transform:
   - {fileID: 7687150666283867620}
   - {fileID: 7235509525068320185}
   - {fileID: 5679481901806311524}
+  - {fileID: 4052854702258596181}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5101454285709900716
@@ -645,6 +692,7 @@ MonoBehaviour:
   DEF: 0
   damageParticle: {fileID: 7592212103189430309}
   playerStatus: {fileID: 0}
+  enemyDamage: {fileID: 2951498463171070249}
 --- !u!50 &3919414708923321839
 Rigidbody2D:
   serializedVersion: 4
@@ -656,8 +704,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.8209347
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3

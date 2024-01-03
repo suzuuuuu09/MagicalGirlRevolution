@@ -15,8 +15,8 @@ MonoBehaviour:
   Strength: {x: 5, y: 5, z: 0}
   Duration: 0.1
   Vibrato: 100
-  Randomness: 0.4
-  Smoothness: 0.06
+  Randomness: 0.26
+  Smoothness: 0.1
   UseRandomInitialAngle: 1
   InitialAngle: 10
   Rotation: {x: 0, y: 0, z: 0}

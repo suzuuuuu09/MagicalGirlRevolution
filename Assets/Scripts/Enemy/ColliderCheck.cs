@@ -14,6 +14,14 @@ public class ColliderCheck : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Ground" || collision.tag == "Enemy")
+        {
+            isOn = true;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Ground" || collision.tag == "Enemy")

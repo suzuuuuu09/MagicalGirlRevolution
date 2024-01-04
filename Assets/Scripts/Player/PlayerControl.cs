@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 using Com.LuisPedroFonseca.ProCamera2D;
 
 public class PlayerControl: MonoBehaviour
@@ -34,7 +35,7 @@ public class PlayerControl: MonoBehaviour
     public float recoveryRate;                   // MP‰ñ•œŠm—¦
     [Space(40)]
     public PlayerStatus playerStatus;
-    public EnemyStatus enemyStatus;
+    public EnemyStatus[] enemyStatus;
 
 
     private Rigidbody2D rb = null;
@@ -159,7 +160,7 @@ public class PlayerControl: MonoBehaviour
     }
 
     
-    IEnumerator Attack_ult()
+    private IEnumerator Attack_ult()
     {
         yield return new WaitForSeconds(ultRate);
         for (; ; )

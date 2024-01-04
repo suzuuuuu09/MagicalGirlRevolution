@@ -55,6 +55,7 @@ public class Slime : MonoBehaviour
         }
         else if (enemyStatus.isKnockback)
         {
+            print("aaaaaaaaaaaa");
             Knockback();
         }
     }
@@ -62,7 +63,6 @@ public class Slime : MonoBehaviour
 
     private void Movement()
     {
-        timeCount += Time.deltaTime;
         if (timeCount > moveTime)
         {
             groundCheck.isOn = false;
@@ -78,6 +78,7 @@ public class Slime : MonoBehaviour
         }
         if(groundCheck.isOn)
         {
+            timeCount += Time.deltaTime;
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }

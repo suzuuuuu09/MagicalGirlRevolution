@@ -50,7 +50,6 @@ public class EnemyStatus : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            anim.SetTrigger("attack");
             if(collision.transform.position.x < transform.position.x)
             {
                 playerStatus.isKnockbackFromRight = true;
@@ -125,9 +124,9 @@ public class EnemyStatus : MonoBehaviour
         curHP = 0;
         playerStatus.curMP++;
     }
-
     
-    IEnumerator Knockback()
+    
+    private IEnumerator Knockback()
     {
         isKnockback = true;
 

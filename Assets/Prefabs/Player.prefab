@@ -421,6 +421,8 @@ MonoBehaviour:
   knockbackForce: 7
   isKnockback: 0
   isKnockbackFromRight: 0
+  damageTime: 4
+  flashTime: 0.125
   ATK: 0
   DEF: 0
   RES: 0
@@ -465,7 +467,9 @@ MonoBehaviour:
   hitRate: 0.8
   recoveryRate: 0.05
   playerStatus: {fileID: 4375381914700761096}
-  enemyStatus: {fileID: 0}
+  enemyStatus:
+  - {fileID: 4033240428946077596, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
+  - {fileID: 4297143238761530737, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
 --- !u!95 &7855506285817520376
 Animator:
   serializedVersion: 5
@@ -533,8 +537,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.9713882
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3

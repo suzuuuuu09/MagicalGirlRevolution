@@ -82,7 +82,7 @@ public class PlayerStatus : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Enemy"))
         {
@@ -94,7 +94,7 @@ public class PlayerStatus : MonoBehaviour
     }
 
 
-    void Damage()
+    private void Damage()
     {
         if (!isDead)
         {
@@ -115,7 +115,7 @@ public class PlayerStatus : MonoBehaviour
     }
 
 
-    IEnumerator Knockback()
+    private IEnumerator Knockback()
     {
         isKnockback = true;
         

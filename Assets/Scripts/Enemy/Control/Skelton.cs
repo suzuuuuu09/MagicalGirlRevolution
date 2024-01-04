@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyControl : MonoBehaviour
+public class Skelton : MonoBehaviour
 {
     [Header("移動")]
     public float speed;                      // 移動速度
@@ -17,7 +17,7 @@ public class EnemyControl : MonoBehaviour
 
     public static bool rightTleftF = false;
 
-
+    private float xSpeed;
     private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
@@ -47,22 +47,7 @@ public class EnemyControl : MonoBehaviour
         {
             if (isScreen || nonVisibleAct)
             {
-                float xSpeed = speed;
-                anim.SetBool("run", true);
-                if (wallCheckR.isOn || wallCheckL.isOn)
-                {
-                    rightTleftF = !rightTleftF;
-                }
-                if (rightTleftF)
-                {
-                    xSpeed = -speed;
-                    transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
-                }
-                else
-                {
-                    transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
-                }
-                rb.velocity = new Vector2(-xSpeed, rb.velocity.y);
+                Movement();
             }
             else
             {
@@ -72,15 +57,42 @@ public class EnemyControl : MonoBehaviour
         }
         else if (enemyStatus.isKnockback)
         {
-            float knockbackForce = enemyStatus.knockbackForce;
-            if(transform.position.x > player.position.x)
-            {
-                rb.velocity = new Vector2(knockbackForce, knockbackForce);
-            }
-            if(transform.position.x < player.position.x)
-            {
-                rb.velocity = new Vector2(-knockbackForce, knockbackForce);
-            }
+            Knockback();
+        }
+    }
+
+
+    private void Movement()
+    {
+        xSpeed = speed;
+        anim.SetBool("run", true);
+        if (wallCheckR.isOn || wallCheckL.isOn)
+        {
+            rightTleftF = !rightTleftF;
+        }
+        if (rightTleftF)
+        {
+            xSpeed = -speed;
+            transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+        }
+        rb.velocity = new Vector2(-xSpeed, rb.velocity.y);
+    }
+
+
+    private void Knockback()
+    {
+        float knockbackForce = enemyStatus.knockbackForce;
+        if (transform.position.x > player.position.x)
+        {
+            rb.velocity = new Vector2(knockbackForce, knockbackForce);
+        }
+        if (transform.position.x < player.position.x)
+        {
+            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
         }
     }
 }

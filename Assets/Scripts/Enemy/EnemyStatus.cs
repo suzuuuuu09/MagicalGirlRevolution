@@ -11,6 +11,11 @@ public class EnemyStatus : MonoBehaviour
     public int LV;                            // レベル
     public int ATK;                           // 攻撃力
     public int DEF;                           // 防御力
+    [Header("Knockback")]
+    public float knockbackForce;
+    public float knockbackTime;
+    public bool isKnockback;
+
     [Header("ParticleEffect")]
     public ParticleSystem damageParticle;     // ダメージエフェクト
     [Space(40)]
@@ -72,6 +77,7 @@ public class EnemyStatus : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(Knockback());
         enemyDamage.SpawnPopup(damage);
         curHP -= damage;
         playerStatus.curMP++;
@@ -92,14 +98,15 @@ public class EnemyStatus : MonoBehaviour
     {
         if (rateNum <= (int)(hitRate * 100))
         {
+            StartCoroutine(Knockback());
             enemyDamage.SpawnPopup(damage);
             curHP -= damage;
             damageParticle.Play();
+            anim.SetBool("hurt", true);
             if (rateNum <= (int)(recoveryRate * hitRate * 100))
             {
                 playerStatus.curMP++;
             }
-            anim.SetBool("hurt", true);
             if (curHP <= 0)
             {
                 Dead();
@@ -119,5 +126,15 @@ public class EnemyStatus : MonoBehaviour
         this.enabled = false;
         curHP = 0;
         playerStatus.curMP++;
+    }
+
+    
+    IEnumerator Knockback()
+    {
+        isKnockback = true;
+
+        yield return new WaitForSeconds(knockbackTime);
+
+        isKnockback = false;
     }
 }

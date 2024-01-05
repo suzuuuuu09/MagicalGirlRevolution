@@ -55,7 +55,6 @@ public class Slime : MonoBehaviour
         }
         else if (enemyStatus.isKnockback)
         {
-            print("aaaaaaaaaaaa");
             Knockback();
         }
     }
@@ -65,19 +64,23 @@ public class Slime : MonoBehaviour
     {
         if (timeCount > moveTime)
         {
+            anim.SetBool("jump", true);
             groundCheck.isOn = false;
-            if (transform.position.x > player.position.x)
+            if (transform.position.x >= player.position.x)
             {
                 rb.velocity = new Vector2(-moveSpeed, jumpPower);
+                transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
             }
             if (transform.position.x < player.position.x)
             {
                 rb.velocity = new Vector2(moveSpeed, jumpPower);
+                transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
             }
             timeCount = 0;
         }
         if(groundCheck.isOn)
         {
+            anim.SetBool("jump", false);
             timeCount += Time.deltaTime;
             rb.velocity = new Vector2(0, rb.velocity.y);
         }

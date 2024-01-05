@@ -78,7 +78,7 @@ public class EnemyStatus : MonoBehaviour
         enemyDamage.SpawnPopup(damage);
         curHP -= damage;
         playerStatus.curMP++;
-        anim.SetBool("hurt", true);
+        anim.SetTrigger("hurt");
         damageParticle.Play();
         if (curHP <= 0)
         {
@@ -99,7 +99,7 @@ public class EnemyStatus : MonoBehaviour
             enemyDamage.SpawnPopup(damage);
             curHP -= damage;
             damageParticle.Play();
-            anim.SetBool("hurt", true);
+            anim.SetTrigger("hurt");
             if (rateNum <= (int)(recoveryRate * hitRate * 100))
             {
                 playerStatus.curMP++;

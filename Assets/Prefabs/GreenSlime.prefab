@@ -5184,7 +5184,7 @@ MonoBehaviour:
   knockbackTime: 0.2
   isKnockback: 0
   damageParticle: {fileID: 5373680605724284689}
-  playerStatus: {fileID: 0}
+  playerStatus: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
   enemyDamage: {fileID: 5047721633977883577}
 --- !u!114 &4606436426312002901
 MonoBehaviour:
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   moveTime: 3
   nonVisibleAct: 1
   enemyStatus: {fileID: 4033240428946077596}
-  player: {fileID: 4684903331078520595, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+  player: {fileID: 0}
   groundCheck: {fileID: 3377540424781934930}
 --- !u!95 &7592189461417986438
 Animator:

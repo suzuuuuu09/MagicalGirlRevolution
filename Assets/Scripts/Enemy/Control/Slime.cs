@@ -7,19 +7,16 @@ public class Slime : MonoBehaviour
 {
     [Header("移動")]
     public float moveSpeed;                      // 移動速度
-    public float jumpPower;
-    public float moveTime;
+    public float jumpPower;                      // ジャンプ力
+    public float moveTime;                       // 移動時間
     [Header("画面外でも動かす")]
-    public bool nonVisibleAct;               // 画面外でも動かす
+    public bool nonVisibleAct;                   // 画面外でも動かす
     [Space(40)]
     public EnemyStatus enemyStatus;
-    public Transform player;
     public ColliderCheck groundCheck;
 
 
-    public static bool rightTleftF = false;
-
-    private float xSpeed;
+    private Transform player = null;
     private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
@@ -30,9 +27,18 @@ public class Slime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        if (transform.position.x >= player.position.x)
+        {
+            transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+        }
+        if (transform.position.x < player.position.x)
+        {
+            transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     void Update()
@@ -58,8 +64,8 @@ public class Slime : MonoBehaviour
             Knockback();
         }
     }
-
-
+    
+    
     private void Movement()
     {
         if (timeCount > moveTime)
@@ -82,7 +88,6 @@ public class Slime : MonoBehaviour
         {
             anim.SetBool("jump", false);
             timeCount += Time.deltaTime;
-            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 

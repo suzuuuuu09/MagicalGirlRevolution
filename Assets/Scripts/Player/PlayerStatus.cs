@@ -7,32 +7,34 @@ using Com.LuisPedroFonseca.ProCamera2D;
 public class PlayerStatus : MonoBehaviour
 {
     [Header("HP")]
-    public int maxHP = 6;                 // 最大HP
-    public int curHP = 0;                 // 現在HP
+    public int maxHP = 6;                            // 最大HP
+    public int curHP = 0;                            // 現在HP(格納用)
+    public static int currentHP;                     // 現在HP
     [Header("MP")]
-    public int maxMP = 6;                 // 最大MP
-    public int curMP = 0;                 // 現在MP
+    public int maxMP = 6;                            // 最大MP
+    public int curMP = 0;                            // 現在MP(格納用)
+    public static int currentMP;                     // 現在MP
     [Header("Level")]
-    public int Lv;                        // レベル
-    public int Exp;                       // 経験値
-    public int LvUpExp;                   // 必要経験値
+    public int Lv;                                   // レベル
+    public int Exp;                                  // 経験値
+    public int LvUpExp;                              // 必要経験値
     [Header("KnockBack")]
-    public float knockbackTime;           // ノックバック時間
-    public float knockbackForce;          // ノックバック力
-    public bool isKnockback;              // ノックバック判定
-    public bool isKnockbackFromRight;     // ノックバック向き判定
+    public float knockbackTime;                      // ノックバック時間
+    public float knockbackForce;                     // ノックバック力
+    public bool isKnockback;                         // ノックバック判定
+    public static  bool isKnockbackFromRight;        // ノックバック向き判定
     [Header("無敵")]
-    public float damageTime;              // 無敵時間
-    public float flashTime;               // 点滅時間
+    public float damageTime;                         // 無敵時間
+    public float flashTime;                          // 点滅時間
     [Header("Status")]
-    public int ATK;                       // 攻撃力
-    public int DEF;                       // 防御力
-    public int RES;                       // 効果抵抗
-    public int KILL;                      // 敵を殺した数
-    public int COIN;                      // コイン
-    public bool isDead = false;           // 死亡判定
+    public int ATK;                                  // 攻撃力
+    public int DEF;                                  // 防御力
+    public int RES;                                  // 効果抵抗
+    public int KILL;                                 // 敵を殺した数
+    public int COIN;                                 // コイン
+    public bool isDead = false;                      // 死亡判定
     [Header("ParticleEffect")]
-    public ParticleSystem damageParticle; // ダメージエフェクト
+    public ParticleSystem damageParticle;            // ダメージエフェクト
     [Space(30)]
     public HP hp;
 
@@ -45,29 +47,32 @@ public class PlayerStatus : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        curHP = maxHP;
-        curMP = 0;
+        currentHP = maxHP;
+        currentMP = 0;
+
     }
 
 
     void Update()
     {
+        curHP = currentHP;
+        curMP = currentMP;
         // HP,MP処理
-        if (curHP > maxHP)
+        if (currentHP > maxHP)
         {
-            curHP = maxHP;
+            currentHP = maxHP;
         }
-        if (curMP > maxMP)
+        if (currentMP > maxMP)
         {
-            curMP = maxMP;
+            currentMP = maxMP;
         }
-        if (curHP < 0)
+        if (currentHP < 0)
         {
-            curHP = 0;
+            currentHP = 0;
         }
-        if (curMP < 0)
+        if (currentMP < 0)
         {
-            curMP = 0;
+            currentMP = 0;
         }
 
         // レベル処理
@@ -100,9 +105,9 @@ public class PlayerStatus : MonoBehaviour
         {
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            curHP--;
+            currentHP--;
             ProCamera2DShake.Instance.Shake("PlayerDamage");
-            if (curHP <= 0)
+            if (currentHP <= 0)
             {
                 anim.SetTrigger("dead");
                 isDead = true;

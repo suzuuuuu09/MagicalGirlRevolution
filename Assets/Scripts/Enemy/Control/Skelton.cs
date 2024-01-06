@@ -12,12 +12,12 @@ public class Skelton : MonoBehaviour
     public WallCheckR wallCheckR;
     public WallCheckL wallCheckL;
     public EnemyStatus enemyStatus;
-    public Transform player;
     
 
     public static bool rightTleftF = false;
 
     private float xSpeed;
+    public Transform player = null;
     private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
@@ -27,6 +27,7 @@ public class Skelton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();

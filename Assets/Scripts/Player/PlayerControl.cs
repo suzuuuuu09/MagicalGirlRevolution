@@ -68,16 +68,16 @@ public class PlayerControl: MonoBehaviour
             }
         
             // •KŽE‹Z
-            if (playerStatus.curMP >= 2 && Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextUltTime)
+            if (PlayerStatus.currentMP >= 2 && Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextUltTime)
             {
                 nextUltTime = Time.time + ulkCoolDownTime;
                 isUlt = true;
-                playerStatus.curMP -= 2;
+                PlayerStatus.currentMP -= 2;
                 AudioManager.instance.Play("Ult");
                 anim.SetTrigger("atck_ult_start");
                 StartCoroutine(Attack_ult());
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || playerStatus.curMP <= 0)
+            if (Input.GetKeyUp(KeyCode.LeftShift) || isJump || PlayerStatus.currentMP <= 0)
             {
                 isUlt = false;
                 StopCoroutine(Attack_ult());
@@ -165,20 +165,20 @@ public class PlayerControl: MonoBehaviour
         yield return new WaitForSeconds(ultRate);
         for (; ; )
         {
-            if (playerStatus.curMP <= 0 || !isUlt)
+            if (PlayerStatus.currentMP <= 0 || !isUlt)
             {
                 break;
             }
 
             yield return new WaitForSeconds(ultRate / 2);
             AttackUlt();
-            if (playerStatus.curMP <= 0 || !isUlt)
+            if (PlayerStatus.currentMP <= 0 || !isUlt)
             {
                 break;
             }
 
             yield return new WaitForSeconds(ultRate / 2);
-            playerStatus.curMP--;
+            PlayerStatus.currentMP--;
             AttackUlt();
         }
     }
@@ -216,7 +216,7 @@ public class PlayerControl: MonoBehaviour
         groundCheck = false;
         isJump = true;
         float knockbackForce = playerStatus.knockbackForce;
-        bool isKnockbackFromRight = playerStatus.isKnockbackFromRight;
+        bool isKnockbackFromRight = PlayerStatus.isKnockbackFromRight;
         if (isKnockbackFromRight)
         {
             rb.velocity = new Vector2(-knockbackForce, knockbackForce);

@@ -12,14 +12,13 @@ public class EnemyStatus : MonoBehaviour
     public int ATK;                           // 攻撃力
     public int DEF;                           // 防御力
     [Header("Knockback")]
-    public float knockbackForce;
-    public float knockbackTime;
-    public bool isKnockback;
+    public float knockbackForce;              // ノックバック力量
+    public float knockbackTime;               // ノックバック時間
+    public bool isKnockback;                  // ノックバックしているか
 
     [Header("ParticleEffect")]
     public ParticleSystem damageParticle;     // ダメージエフェクト
     [Space(40)]
-    public PlayerStatus playerStatus;
     public EnemyDamage enemyDamage;
 
 
@@ -52,14 +51,13 @@ public class EnemyStatus : MonoBehaviour
         {
             if(collision.transform.position.x < transform.position.x)
             {
-                playerStatus.isKnockbackFromRight = true;
+                PlayerStatus.isKnockbackFromRight = true;
             }
             if (collision.transform.position.x > transform.position.x)
             {
-                playerStatus.isKnockbackFromRight = false;
+                PlayerStatus.isKnockbackFromRight = false;
             }
         }
-        
     }
 
 
@@ -77,7 +75,7 @@ public class EnemyStatus : MonoBehaviour
         StartCoroutine(Knockback());
         enemyDamage.SpawnPopup(damage);
         curHP -= damage;
-        playerStatus.curMP++;
+        PlayerStatus.currentMP++;
         anim.SetTrigger("hurt");
         damageParticle.Play();
         if (curHP <= 0)
@@ -102,7 +100,7 @@ public class EnemyStatus : MonoBehaviour
             anim.SetTrigger("hurt");
             if (rateNum <= (int)(recoveryRate * hitRate * 100))
             {
-                playerStatus.curMP++;
+                PlayerStatus.currentMP++;
             }
             if (curHP <= 0)
             {
@@ -122,7 +120,7 @@ public class EnemyStatus : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         curHP = 0;
-        playerStatus.curMP++;
+        PlayerStatus.currentMP++;
     }
     
     

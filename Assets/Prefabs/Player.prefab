@@ -420,7 +420,6 @@ MonoBehaviour:
   knockbackTime: 0.2
   knockbackForce: 7
   isKnockback: 0
-  isKnockbackFromRight: 0
   damageTime: 4
   flashTime: 0.125
   ATK: 0
@@ -470,6 +469,7 @@ MonoBehaviour:
   enemyStatus:
   - {fileID: 4033240428946077596, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
   - {fileID: 4297143238761530737, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
+  - {fileID: 3018341344169698873, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
 --- !u!95 &7855506285817520376
 Animator:
   serializedVersion: 5

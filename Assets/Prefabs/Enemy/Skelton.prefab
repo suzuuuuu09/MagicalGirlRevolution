@@ -584,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2940545456556585969
 Transform:
   m_ObjectHideFlags: 0
@@ -696,7 +696,6 @@ MonoBehaviour:
   knockbackTime: 0.2
   isKnockback: 0
   damageParticle: {fileID: 7592212103189430309}
-  playerStatus: {fileID: 0}
   enemyDamage: {fileID: 2951498463171070249}
 --- !u!50 &3919414708923321839
 Rigidbody2D:

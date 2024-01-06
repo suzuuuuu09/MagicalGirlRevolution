@@ -52,12 +52,9 @@ public class Slime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!enemyStatus.isKnockback)
+        if (!enemyStatus.isKnockback && (isScreen || nonVisibleAct))
         {
-            if (isScreen || nonVisibleAct)
-            {
-                Movement();
-            }
+            Movement();
         }
         else if (enemyStatus.isKnockback)
         {
@@ -98,10 +95,12 @@ public class Slime : MonoBehaviour
         if (transform.position.x > player.position.x)
         {
             rb.velocity = new Vector2(knockbackForce, knockbackForce);
+            transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
         }
         if (transform.position.x < player.position.x)
         {
             rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+            transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
         }
     }
 }

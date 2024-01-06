@@ -91,18 +91,19 @@ public class PlayerStatus : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
             Damage();
-            StartCoroutine(Knockback());
-            StartCoroutine(Invincible());
+            
         }
     }
 
 
-    private void Damage()
+    public void Damage()
     {
         if (!isDead)
         {
+            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
+            StartCoroutine(Knockback());
+            StartCoroutine(Invincible());
             damageParticle.Play();
             anim.SetTrigger("hurt");
             currentHP--;

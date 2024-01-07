@@ -19,6 +19,7 @@ public class Voynich : MonoBehaviour
     private Transform player = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
+    private int attackCount = 0;
 
 
     public enum VoynichState
@@ -82,12 +83,12 @@ public class Voynich : MonoBehaviour
         float dist = Vector2.Distance(player.position, transform.position);
         if(dist <= attackDistance)
         {
-            Attack();
+            voynichState = VoynichState.Attack;
             return;
         }
         else
         {
-            Walk();
+            voynichState= VoynichState.Walk;
             return;
         }
     }
@@ -145,6 +146,19 @@ public class Voynich : MonoBehaviour
         {
             players.GetComponent<PlayerStatus>().Damage();
         }
+        if (player.position.x <= transform.position.x)
+        {
+            PlayerStatus.isKnockbackFromRight = true;
+        }
+        else if (player.position.x > transform.position.x)
+        {
+            PlayerStatus.isKnockbackFromRight = false;
+        }
     }
 
+
+    private void AnimationAttackCount()
+    {
+        attackCount++;
+    }
 }

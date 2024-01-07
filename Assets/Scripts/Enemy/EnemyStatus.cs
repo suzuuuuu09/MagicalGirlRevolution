@@ -49,11 +49,11 @@ public class EnemyStatus : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            if(collision.transform.position.x < transform.position.x)
+            if(collision.transform.position.x <= transform.position.x)
             {
                 PlayerStatus.isKnockbackFromRight = true;
             }
-            if (collision.transform.position.x > transform.position.x)
+            else if (collision.transform.position.x > transform.position.x)
             {
                 PlayerStatus.isKnockbackFromRight = false;
             }

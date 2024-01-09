@@ -24,7 +24,25 @@ public class EnemyStatus : MonoBehaviour
 
     private Animator anim = null;
     private Rigidbody2D rb = null;
-    private int rateNum = 0;
+
+
+    public static bool Probability(float fPercent)
+    {
+        float fProbabilityRate = UnityEngine.Random.value * 100.0f;
+
+        if (fPercent == 100.0f && fProbabilityRate == fPercent)
+        {
+            return true;
+        }
+        else if (fProbabilityRate < fPercent)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
     private void Start()
@@ -37,7 +55,6 @@ public class EnemyStatus : MonoBehaviour
 
     private void Update()
     {
-        rateNum = Random.Range(1, 100);
         if(curHP > maxHP)
         {
             curHP = maxHP;
@@ -91,14 +108,14 @@ public class EnemyStatus : MonoBehaviour
 
     public void TakeDamageMagic(int damage, float hitRate, float recoveryRate)
     {
-        if (rateNum <= (int)(hitRate * 100))
+        if (Probability(hitRate))
         {
             StartCoroutine(Knockback());
             enemyDamage.SpawnPopup(damage);
             curHP -= damage;
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            if (rateNum <= (int)(recoveryRate * hitRate * 100))
+            if (Probability(recoveryRate))
             {
                 PlayerStatus.currentMP++;
             }

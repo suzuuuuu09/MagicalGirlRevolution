@@ -9,6 +9,7 @@ public class Slime : MonoBehaviour
     public float moveSpeed;                      // 移動速度
     public float jumpPower;                      // ジャンプ力
     public float moveTime;                       // 移動時間
+    public float turnRate;
     [Header("画面外でも動かす")]
     public bool nonVisibleAct;                   // 画面外でも動かす
     [Space(40)]
@@ -22,7 +23,27 @@ public class Slime : MonoBehaviour
     private Rigidbody2D rb = null;
     private bool isScreen = false;
     private float timeCount = 0;
+    private float xVector;
+    private float xScale;
 
+
+    public static bool Probability(float fPercent)
+    {
+        float fProbabilityRate = UnityEngine.Random.value * 100.0f;
+
+        if (fPercent == 100.0f && fProbabilityRate == fPercent)
+        {
+            return true;
+        }
+        else if (fProbabilityRate < fPercent)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +54,13 @@ public class Slime : MonoBehaviour
         anim = GetComponent<Animator>();
         if (transform.position.x >= player.position.x)
         {
-            transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+            xVector = -1;
+            xScale = -1;
         }
         if (transform.position.x < player.position.x)
         {
-            transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
+            xVector = 1;
+            xScale = 1;
         }
     }
 
@@ -69,17 +92,20 @@ public class Slime : MonoBehaviour
         {
             anim.SetBool("jump", true);
             groundCheck.isOn = false;
-            if (transform.position.x >= player.position.x)
+            if (transform.position.x >= player.position.x && Probability(turnRate))
             {
-                rb.velocity = new Vector2(-moveSpeed, jumpPower);
-                transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+                xVector = -1;
+                xScale = -1;
             }
-            if (transform.position.x < player.position.x)
+            if (transform.position.x < player.position.x && Probability(turnRate))
             {
-                rb.velocity = new Vector2(moveSpeed, jumpPower);
-                transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
+                xVector = 1;
+                xScale = 1;
             }
             timeCount = 0;
+            rb.velocity = new Vector2(xVector * moveSpeed, jumpPower);
+            transform.localScale = new Vector3(xScale * transform.localScale.x, 
+                transform.localScale.y, transform.localScale.z);
         }
         if(groundCheck.isOn)
         {

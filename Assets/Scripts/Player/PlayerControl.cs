@@ -58,7 +58,7 @@ public class PlayerControl: MonoBehaviour
 
     private void Update()
     {
-        if (!playerStatus.isDead)
+        if (!PlayerStatus.isDead)
         {
             // ‹ßÚUŒ‚
             if (Time.time >= nextAttackTime && Input.GetKeyDown(KeyCode.Z))
@@ -91,7 +91,7 @@ public class PlayerControl: MonoBehaviour
     {
         groundCheck = ground.IsGround();
         headCheck = head.IsGround();
-        if (!playerStatus.isDead && !playerStatus.isKnockback)
+        if (!PlayerStatus.isDead && !PlayerStatus.isKnockback)
         {
             float horizontalKey = Input.GetAxisRaw("Horizontal");
             float verticalKey = Input.GetAxisRaw("Vertical");
@@ -134,7 +134,7 @@ public class PlayerControl: MonoBehaviour
             anim.SetBool("jump", isJump);
             anim.SetBool("ground", groundCheck);
         }
-        else if(!playerStatus.isDead && playerStatus.isKnockback)
+        else if(!PlayerStatus.isDead && PlayerStatus.isKnockback)
         {
             Knockback();
         }

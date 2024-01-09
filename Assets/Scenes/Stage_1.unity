@@ -177,6 +177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueSlime
       objectReference: {fileID: 0}
+    - target: {fileID: 744557645795208834, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1186550124316030646, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.09
@@ -219,11 +223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2220781683273821078, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2220781683273821078, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992817443476303215, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_Material
@@ -5412,6 +5416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenSlime
       objectReference: {fileID: 0}
+    - target: {fileID: 2942811070464173380, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4331052449313018536, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5458,11 +5466,11 @@ PrefabInstance:
       objectReference: {fileID: 362153963}
     - target: {fileID: 7213964872763221065, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7213964872763221065, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6506,11 +6514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280253402991857872, guid: ab72c0e85fec6704ab9ec88ace244201, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4280253402991857872, guid: ab72c0e85fec6704ab9ec88ace244201, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5948297279461264515, guid: ab72c0e85fec6704ab9ec88ace244201, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6522,7 +6530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6441479901398547501, guid: ab72c0e85fec6704ab9ec88ace244201, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6445305679581094579, guid: ab72c0e85fec6704ab9ec88ace244201, type: 3}
       propertyPath: m_Material
@@ -6923,6 +6931,22 @@ PrefabInstance:
       propertyPath: hp
       value: 
       objectReference: {fileID: 442990854}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: poisonDamage
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: poisonNumberMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: poisonNumberMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
+      propertyPath: poisonDamageIntervalTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4476029966824545724, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
       propertyPath: m_Name
       value: Player

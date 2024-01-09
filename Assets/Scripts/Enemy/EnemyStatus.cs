@@ -26,25 +26,6 @@ public class EnemyStatus : MonoBehaviour
     private Rigidbody2D rb = null;
 
 
-    public static bool Probability(float fPercent)
-    {
-        float fProbabilityRate = UnityEngine.Random.value * 100.0f;
-
-        if (fPercent == 100.0f && fProbabilityRate == fPercent)
-        {
-            return true;
-        }
-        else if (fProbabilityRate < fPercent)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-
     private void Start()
     {
         curHP = maxHP;
@@ -108,14 +89,14 @@ public class EnemyStatus : MonoBehaviour
 
     public void TakeDamageMagic(int damage, float hitRate, float recoveryRate)
     {
-        if (Probability(hitRate))
+        if (MathCheck.Probability(hitRate))
         {
             StartCoroutine(Knockback());
             enemyDamage.SpawnPopup(damage);
             curHP -= damage;
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            if (Probability(recoveryRate))
+            if (MathCheck.Probability(recoveryRate))
             {
                 PlayerStatus.currentMP++;
             }

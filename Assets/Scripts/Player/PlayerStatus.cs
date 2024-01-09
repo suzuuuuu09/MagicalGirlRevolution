@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Com.LuisPedroFonseca.ProCamera2D;
-
+using Unity.VisualScripting;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -21,8 +21,8 @@ public class PlayerStatus : MonoBehaviour
     [Header("KnockBack")]
     public float knockbackTime;                      // ノックバック時間
     public float knockbackForce;                     // ノックバック力
-    public bool isKnockback;                         // ノックバック判定
-    public static  bool isKnockbackFromRight;        // ノックバック向き判定
+    public static bool isKnockback;                  // ノックバック判定
+    public static bool isKnockbackFromRight;         // ノックバック向き判定
     [Header("無敵")]
     public float damageTime;                         // 無敵時間
     public float flashTime;                          // 点滅時間
@@ -32,7 +32,13 @@ public class PlayerStatus : MonoBehaviour
     public int RES;                                  // 効果抵抗
     public int KILL;                                 // 敵を殺した数
     public int COIN;                                 // コイン
-    public bool isDead = false;                      // 死亡判定
+    public static bool isDead;                       // 死亡判定
+    [Header("毒状態")]
+    public float poisonNumberMin;
+    public float poisonNumberMax;
+    public float poisonDamageIntervalTime;
+    public float poisonDamage;
+    public bool isPoison;                     // 毒状態
     [Header("ParticleEffect")]
     public ParticleSystem damageParticle;            // ダメージエフェクト
     [Space(30)]
@@ -92,7 +98,6 @@ public class PlayerStatus : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Damage();
-            
         }
     }
 
@@ -121,7 +126,7 @@ public class PlayerStatus : MonoBehaviour
     }
 
 
-    private IEnumerator Knockback()
+    IEnumerator Knockback()
     {
         isKnockback = true;
         
@@ -146,6 +151,19 @@ public class PlayerStatus : MonoBehaviour
             }
             spriteRenderer.color = color;
             gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+    }
+
+
+    IEnumerator Poison()
+    {
+        if(isPoison)
+        {
+            for (int i = 0;i < 5; i++)
+            {
+                Damage();
+                yield return new WaitForSeconds(poisonDamageIntervalTime);
+            }
         }
     }
 }

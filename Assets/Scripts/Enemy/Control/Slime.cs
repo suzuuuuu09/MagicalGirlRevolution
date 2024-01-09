@@ -27,24 +27,6 @@ public class Slime : MonoBehaviour
     private float xScale;
 
 
-    public static bool Probability(float fPercent)
-    {
-        float fProbabilityRate = UnityEngine.Random.value * 100.0f;
-
-        if (fPercent == 100.0f && fProbabilityRate == fPercent)
-        {
-            return true;
-        }
-        else if (fProbabilityRate < fPercent)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -92,12 +74,12 @@ public class Slime : MonoBehaviour
         {
             anim.SetBool("jump", true);
             groundCheck.isOn = false;
-            if (transform.position.x >= player.position.x && Probability(turnRate))
+            if (transform.position.x >= player.position.x && MathCheck.Probability(turnRate))
             {
                 xVector = -1;
                 xScale = -1;
             }
-            if (transform.position.x < player.position.x && Probability(turnRate))
+            if (transform.position.x < player.position.x && MathCheck.Probability(turnRate))
             {
                 xVector = 1;
                 xScale = 1;

@@ -8,22 +8,17 @@ using DG.Tweening;
 
 public class EnemyHPBar : MonoBehaviour
 {
-    public Slider hpSlider;
     public EnemyStatus enemyStatus;
     public UIHue uiHue;
+    public float fillSpeed;
+    public Image hpBarFill;
 
     private float value = 1;
 
-    void Start()
-    {
-        hpSlider.value = 1f;
-    }
-
     void Update()
     {
-        value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
+        UpdateHPBar();
         ChangeBarColor();
-        hpSlider.value = value;
         ScaleWithoutInfluence();
     }
 
@@ -47,7 +42,14 @@ public class EnemyHPBar : MonoBehaviour
         if(hueValue < 360)
         {
             hueValue = -170 * value + 410;
-            uiHue.ChangeHue(hueValue);
+            uiHue.hue = hueValue;
         }
+    }
+
+    private void UpdateHPBar()
+    {
+        value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
+        enemyStatus.curHP = Mathf.Clamp(enemyStatus.curHP, 0, enemyStatus.maxHP);
+        hpBarFill.DOFillAmount(value, fillSpeed);
     }
 }

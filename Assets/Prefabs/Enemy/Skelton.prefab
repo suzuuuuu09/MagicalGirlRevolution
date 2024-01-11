@@ -513,9 +513,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSlider: {fileID: 5342830082644790025}
   enemyStatus: {fileID: 4297143238761530737}
   uiHue: {fileID: 6026057287955857683}
+  fillSpeed: 0.3
+  hpBarFill: {fileID: 1829225182533754657}
 --- !u!1 &5702187710978454868
 GameObject:
   m_ObjectHideFlags: 0

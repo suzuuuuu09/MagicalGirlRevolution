@@ -155,7 +155,7 @@ public class PlayerControl: MonoBehaviour
             attackPointProx.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyStatus>().TakeDamage(attackDamage);
+            enemy.GetComponent<EnemyStatus>().TakeDamage(playerStatus.ATK);
         }
     }
 

@@ -4943,10 +4943,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 638953996514b504a849ba0005b3c7b7, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5133,7 +5133,7 @@ MonoBehaviour:
   isKnockback: 0
   damageParticle: {fileID: 5373680605724284689}
   enemyDamage: {fileID: 5047721633977883577}
-  enemyHPBar: {fileID: 0}
+  enemyHPBar: {fileID: 8484890385469307460}
 --- !u!114 &4606436426312002901
 MonoBehaviour:
   m_ObjectHideFlags: 0

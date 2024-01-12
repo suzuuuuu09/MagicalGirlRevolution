@@ -645,6 +645,7 @@ MonoBehaviour:
   isKnockback: 0
   damageParticle: {fileID: 7592212103189430309}
   enemyDamage: {fileID: 2951498463171070249}
+  enemyHPBar: {fileID: 8609100920232539500}
 --- !u!50 &3919414708923321839
 Rigidbody2D:
   serializedVersion: 4

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Unity.VisualScripting;
+using DamageNumbersPro.Demo;
 
 public class PlayerStatus : MonoBehaviour
 {
     [Header("HP")]
     public int maxHP = 6;                            // 最大HP
-    public int curHP = 0;                            // 現在HP(格納用)
-    public static int currentHP;                     // 現在HP
+    public int curHP = 0;                            // 現在HP
+    public static int currentHP;                     // 現在HP(格納用)
     [Header("MP")]
     public int maxMP = 6;                            // 最大MP
-    public int curMP = 0;                            // 現在MP(格納用)
-    public static int currentMP;                     // 現在MP
+    public int curMP = 0;                            // 現在MP
+    public static int currentMP;                     // 現在MP(格納用)
     [Header("Level")]
     public int Lv;                                   // レベル
     public int Exp;                                  // 経験値
@@ -43,6 +44,7 @@ public class PlayerStatus : MonoBehaviour
     public ParticleSystem damageParticle;            // ダメージエフェクト
     [Space(30)]
     public HP hp;
+    public PlayerDamage playerDamage;
 
 
     private Animator anim = null;
@@ -53,32 +55,32 @@ public class PlayerStatus : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHP = maxHP;
-        currentMP = 0;
+        curHP = maxHP;
+        curMP = 0;
 
     }
 
 
     void Update()
     {
-        curHP = currentHP;
-        curMP = currentMP;
+        currentHP = curHP;
+        currentMP = curMP;
         // HP,MP処理
-        if (currentHP > maxHP)
+        if (curHP > maxHP)
         {
-            currentHP = maxHP;
+            curHP = maxHP;
         }
-        if (currentMP > maxMP)
+        if (curMP > maxMP)
         {
-            currentMP = maxMP;
+            curMP = maxMP;
         }
-        if (currentHP < 0)
+        if (curHP < 0)
         {
-            currentHP = 0;
+            curHP = 0;
         }
-        if (currentMP < 0)
+        if (curMP < 0)
         {
-            currentMP = 0;
+            curMP = 0;
         }
 
         // レベル処理
@@ -112,14 +114,15 @@ public class PlayerStatus : MonoBehaviour
     {
         if (!isDead)
         {
+            playerDamage.SpawnPopup(damage);
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
             StartCoroutine(Knockback());
             StartCoroutine(Invincible());
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            currentHP-= damage;
+            curHP-= damage;
             ProCamera2DShake.Instance.Shake("PlayerDamage");
-            if (currentHP <= 0)
+            if (curHP <= 0)
             {
                 anim.SetTrigger("dead");
                 isDead = true;

@@ -13,13 +13,9 @@ public class EnemyHPBar : MonoBehaviour
     public float fillSpeed;
     public Image hpBarFill;
 
+
     private float value = 1;
 
-
-    private void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -52,12 +48,14 @@ public class EnemyHPBar : MonoBehaviour
         }
     }
 
+
     private void UpdateHPBar()
     {
         value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
         enemyStatus.curHP = Mathf.Clamp(enemyStatus.curHP, 0, enemyStatus.maxHP);
         hpBarFill.DOFillAmount(value, fillSpeed);
     }
+
 
     public void OnDestroy()
     {

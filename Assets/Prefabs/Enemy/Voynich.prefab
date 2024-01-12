@@ -321,6 +321,7 @@ MonoBehaviour:
   isKnockback: 0
   damageParticle: {fileID: 0}
   enemyDamage: {fileID: 0}
+  enemyHPBar: {fileID: 542677307510547586}
 --- !u!212 &5948297279461264515
 SpriteRenderer:
   m_ObjectHideFlags: 0

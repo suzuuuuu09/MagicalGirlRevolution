@@ -71,9 +71,11 @@ public class EnemyStatus : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int ATK)
     {
         StartCoroutine(Knockback());
+        float randDamageRate = Random.Range(0.85f, 1.15f);
+        int damage = (int)((float)ATK * randDamageRate - (DEF / 2));
         enemyDamage.SpawnPopup(damage);
         curHP -= damage;
         PlayerStatus.currentMP++;

@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3781fe5842cda8343b5a66351af0f824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 60
+  maxHP: 100
   curHP: 0
   maxMP: 10
   curMP: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   knockbackForce: 7
   damageTime: 4
   flashTime: 0.125
-  ATK: 0
+  ATK: 6
   DEF: 1
   RES: 0
   KILL: 0

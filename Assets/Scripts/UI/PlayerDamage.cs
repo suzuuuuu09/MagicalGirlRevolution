@@ -5,17 +5,17 @@ using DamageNumbersPro; //Include DamageNumbersPro Namespace     <-----     [REQ
 
 namespace DamageNumbersPro.Demo
 {
-    public class EnemyDamage : MonoBehaviour
+    public class PlayerDamage : MonoBehaviour
     {
         public DamageNumber popupPrefab; //Reference DamageNumber Prefab     <-----     [REQUIRED]
 
         //public Transform target;
-        public EnemyStatus enemyStatus;
+        public PlayerStatus playerStatus;
 
 
         public void SpawnPopup(float number)
         {
-            DamageNumber newPopup = popupPrefab.Spawn(enemyStatus.transform.position, number);
+            DamageNumber newPopup = popupPrefab.Spawn(playerStatus.transform.position, number);
 
 
             //You can do any change you want on the DamageNumber returned by the Spawn(...) function.
@@ -23,10 +23,9 @@ namespace DamageNumbersPro.Demo
 
 
             //Let's make the popup follow the target.
-            newPopup.SetFollowedTarget(enemyStatus.transform);
+            newPopup.SetFollowedTarget(playerStatus.transform);
 
             //Let's check if the number is greater than 5.
-            /*
             if (number > 5)
             {
                 //Let's increase the popup's scale.
@@ -43,7 +42,6 @@ namespace DamageNumbersPro.Demo
                 newPopup.enableRightText = false;
                 newPopup.SetColor(new Color(1, 0.7f, 0.5f));
             }
-            */
         }
     }
 }

@@ -2,14 +2,15 @@ using DamageNumbersPro.Demo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyStatus : MonoBehaviour
 {
     [Header("Status")]
     public int maxHP;                         // 最大HP
     public int curHP;                         // 現在HP
-    public int LV;                            // レベル
     public int ATK;                           // 攻撃力
+    public static int atk;                    // 攻撃力(格納用)
     public int DEF;                           // 防御力
     [Header("Knockback")]
     public float knockbackForce;              // ノックバック力量
@@ -20,6 +21,7 @@ public class EnemyStatus : MonoBehaviour
     public ParticleSystem damageParticle;     // ダメージエフェクト
     [Space(40)]
     public EnemyDamage enemyDamage;
+    public EnemyHPBar enemyHPBar;
 
 
     private Animator anim = null;
@@ -63,6 +65,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if (collision.CompareTag("FallPoint"))
         {
+            enemyHPBar.OnDestroy();
             Destroy(gameObject);
         }
     }

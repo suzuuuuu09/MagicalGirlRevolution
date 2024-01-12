@@ -144,7 +144,7 @@ public class Voynich : MonoBehaviour
             attackPoint.position, attackRange, playerLayer);
         foreach (Collider2D players in hitPlayer)
         {
-            players.GetComponent<PlayerStatus>().Damage();
+            //players.GetComponent<PlayerStatus>().Damage();
             //PlayerStatus.isPoison = true;
         }
         if (player.position.x <= transform.position.x)

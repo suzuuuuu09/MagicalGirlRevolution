@@ -419,15 +419,18 @@ MonoBehaviour:
   LvUpExp: 20
   knockbackTime: 0.2
   knockbackForce: 7
-  isKnockback: 0
   damageTime: 4
   flashTime: 0.125
   ATK: 0
-  DEF: 0
+  DEF: 1
   RES: 0
   KILL: 0
   COIN: 0
-  isDead: 0
+  poisonNumberMin: 1
+  poisonNumberMax: 5
+  poisonDamageIntervalTime: 1
+  poisonDamage: 0.08
+  isPoison: 0
   damageParticle: {fileID: 5504429630639183067}
   hp: {fileID: 0}
 --- !u!114 &1392257382806323347
@@ -463,8 +466,8 @@ MonoBehaviour:
   enemyLayersUlt:
     serializedVersion: 2
     m_Bits: 128
-  hitRate: 0.8
-  recoveryRate: 0.05
+  hitRate: 80
+  recoveryRate: 5
   playerStatus: {fileID: 4375381914700761096}
   enemyStatus:
   - {fileID: 4033240428946077596, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}

@@ -97,12 +97,18 @@ public class PlayerStatus : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            Damage();
+            EnemyStatus enemyStatus = collision.collider.GetComponent<EnemyStatus>();
+            if (enemyStatus != null)
+            {
+                float randDamageRate = Random.Range(0.85f, 1.15f);
+                int damage = (int)((float)enemyStatus.ATK * randDamageRate - (DEF / 2));
+                Damage(damage);
+            }
         }
     }
 
 
-    public void Damage()
+    public void Damage(int damage)
     {
         if (!isDead)
         {
@@ -111,7 +117,7 @@ public class PlayerStatus : MonoBehaviour
             StartCoroutine(Invincible());
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            currentHP--;
+            currentHP-= damage;
             ProCamera2DShake.Instance.Shake("PlayerDamage");
             if (currentHP <= 0)
             {
@@ -161,7 +167,6 @@ public class PlayerStatus : MonoBehaviour
         {
             for (int i = 0;i < 5; i++)
             {
-                Damage();
                 yield return new WaitForSeconds(poisonDamageIntervalTime);
             }
         }

@@ -44,6 +44,14 @@ MonoBehaviour:
     LoadingType: 1
     FakeLoadingTime: 3.5
     Backgrounds: []
+  - SceneName: Title
+    SceneAsset: {fileID: 102900000, guid: c7d7a656c0b4a6d498b8ecc3d1bb2f99, type: 3}
+    DisplayName: Title
+    Description: 
+    SkipType: 3
+    LoadingType: 0
+    FakeLoadingTime: 2
+    Backgrounds: []
   tipsList:
   - Create beautiful loading screens for improved your game
   - Easy to use and implement

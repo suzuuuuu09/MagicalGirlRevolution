@@ -100,12 +100,9 @@ public class PlayerStatus : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             EnemyStatus enemyStatus = collision.collider.GetComponent<EnemyStatus>();
-            if (enemyStatus != null)
-            {
-                float randDamageRate = Random.Range(0.85f, 1.15f);
-                int damage = (int)((float)enemyStatus.ATK * randDamageRate - (DEF / 2));
-                Damage(damage);
-            }
+            float randDamageRate = Random.Range(0.85f, 1.15f);
+            int damage = (int)((float)enemyStatus.ATK * randDamageRate - (DEF / 2));
+            Damage(damage);
         }
     }
 

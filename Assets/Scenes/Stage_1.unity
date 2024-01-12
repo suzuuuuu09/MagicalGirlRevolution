@@ -123,52 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &76707930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 76707931}
-  - component: {fileID: 76707932}
-  m_Layer: 0
-  m_Name: PlayerDamageEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &76707931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76707930}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8, y: 2.0808, z: -1.2}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1934897655}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &76707932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76707930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c7fd66b4128a443a1804f78fde0663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 6810931212934746695, guid: 48f9b4585b80e7944855e4b7f583a7e1, type: 3}
-  playerStatus: {fileID: 1934897663}
 --- !u!1 &139545030
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,11 +224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1186550124316030646, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.09
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1186550124316030646, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.57
+      value: -5.12
       objectReference: {fileID: 0}
     - target: {fileID: 1186550124316030646, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7083,10 +7037,6 @@ PrefabInstance:
       propertyPath: hp
       value: 
       objectReference: {fileID: 442990854}
-    - target: {fileID: 4375381914700761096, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
-      propertyPath: playerDamage
-      value: 
-      objectReference: {fileID: 76707932}
     - target: {fileID: 4476029966824545724, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7133,10 +7083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4684903331078520595, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 76707931}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188b68383acfaee4ea66a88b374f0654, type: 3}
 --- !u!1660057539 &9223372036854775807

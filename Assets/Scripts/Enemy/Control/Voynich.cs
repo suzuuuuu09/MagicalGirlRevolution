@@ -20,6 +20,8 @@ public class Voynich : MonoBehaviour
     private Animator anim = null;
     private Rigidbody2D rb = null;
     private int attackCount = 0;
+    private float attackTime = 0;
+    private float attackInternal = 0;
 
 
     public enum VoynichState
@@ -27,7 +29,8 @@ public class Voynich : MonoBehaviour
         Idle,
         Walk,
         Attack,
-        Cast
+        Cast,
+        Wait
     }
 
     public enum VoynichTactic
@@ -64,6 +67,9 @@ public class Voynich : MonoBehaviour
             case VoynichState.Cast:
                 Cast();
                 break;
+            case VoynichState.Wait:
+                Wait();
+                break;
                 
         }
 
@@ -81,18 +87,34 @@ public class Voynich : MonoBehaviour
     private void UpdateState()
     {
         float dist = Vector2.Distance(player.position, transform.position);
-        if(dist <= attackDistance)
+        attackInternal = Random.Range(1f, 4f);
+        if (dist <= attackDistance)
         {
-            voynichState = VoynichState.Attack;
-            return;
+            if(attackTime <= attackInternal)
+            {
+                if(attackCount < 2)
+                {
+                    voynichState = VoynichState.Attack;
+                }
+                else if (attackCount >= 2)
+                {
+                    attackTime += Time.deltaTime;
+                }
+            }
+            else
+            {
+                attackTime = 0;
+                attackCount = 0;
+            }
         }
         else
         {
             voynichState= VoynichState.Walk;
-            return;
         }
     }
 
+
+    #region VoynichState
 
     private void Idle()
     {
@@ -127,6 +149,15 @@ public class Voynich : MonoBehaviour
     }
 
 
+    private void Wait()
+    {
+
+    }
+
+
+    #endregion VoynichState
+
+
     private void OnDrawGizmosSelected()
     {
         if(attackPoint == null)
@@ -144,7 +175,7 @@ public class Voynich : MonoBehaviour
             attackPoint.position, attackRange, playerLayer);
         foreach (Collider2D players in hitPlayer)
         {
-            //players.GetComponent<PlayerStatus>().Damage();
+            players.GetComponent<PlayerStatus>().Damage(3);
             //PlayerStatus.isPoison = true;
         }
         if (player.position.x <= transform.position.x)

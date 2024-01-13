@@ -117,10 +117,12 @@ public class PlayerStatus : MonoBehaviour
             StartCoroutine(Invincible());
             damageParticle.Play();
             anim.SetTrigger("hurt");
-            curHP-= damage;
+            curHP -= damage;
             ProCamera2DShake.Instance.Shake("PlayerDamage");
             if (curHP <= 0)
             {
+                AudioManager.instance.StopAll();
+                AudioManager.instance.Play("Player_Dead");
                 anim.SetTrigger("dead");
                 isDead = true;
             }
@@ -157,6 +159,10 @@ public class PlayerStatus : MonoBehaviour
             }
             spriteRenderer.color = color;
             gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+        else
+        {
+            yield break; 
         }
     }
 

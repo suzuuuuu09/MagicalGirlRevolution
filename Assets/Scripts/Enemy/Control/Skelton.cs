@@ -6,25 +6,33 @@ public class Skelton : MonoBehaviour
 {
     [Header("移動")]
     public float speed;                      // 移動速度
+    [Header("Jump")]
+    public float jumpPower;
     [Header("画面外でも動かす")]
     public bool nonVisibleAct;               // 画面外でも動かす
     [Header("接触判定")]
-    public WallCheckR wallCheckR;
-    public WallCheckL wallCheckL;
+    public ColliderCheck wallCheckR;
+    public ColliderCheck wallCheckL;
+    public IsGround groundCheckR;
+    public IsGround groundCheckL;
+    public IsGround ground;
     public EnemyStatus enemyStatus;
     
 
     public static bool rightTleftF = false;
 
     private float xSpeed;
-    public Transform player = null;
+    private Transform player = null;
     private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
     private bool isScreen = false;
+    private bool isGround = false;
+    private bool isGroundR = false;
+    private bool isGroundL = false;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,6 +40,7 @@ public class Skelton : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
+
 
     void Update()
     {
@@ -41,7 +50,7 @@ public class Skelton : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (!enemyStatus.isKnockback)
@@ -65,11 +74,15 @@ public class Skelton : MonoBehaviour
 
     private void Movement()
     {
+        isGround = ground.IsGrounds();
+        isGroundL = groundCheckL.IsGrounds();
+        isGroundR = groundCheckR.IsGrounds();
         xSpeed = speed;
         anim.SetBool("run", true);
-        if (wallCheckR.isOn || wallCheckL.isOn)
+        if ((wallCheckR.isOn || wallCheckL.isOn) || (!isGroundL || !isGroundR))
         {
-            rightTleftF = !rightTleftF;
+            Jump();
+            //rightTleftF = !rightTleftF;
         }
         if (rightTleftF)
         {
@@ -81,6 +94,17 @@ public class Skelton : MonoBehaviour
             transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
         }
         rb.velocity = new Vector2(-xSpeed, rb.velocity.y);
+    }
+
+
+    private void Jump()
+    {
+        if (isGround)
+        {
+            isGroundL = true;
+            isGroundR = true;
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
     }
 
 

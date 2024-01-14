@@ -27,14 +27,18 @@ public class EnemyHPBar : MonoBehaviour
 
     private void ScaleWithoutInfluence()
     {
-        if (enemyStatus.transform.localScale.x > 0)
+        float xScale = 1;
+        float zAngles = -enemyStatus.transform.localEulerAngles.z;
+        if (transform.parent.parent.localScale.x > 0)
         {
-            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
+            xScale = 1;
         }
-        if (enemyStatus.transform.localScale.x < 0)
+        else if (transform.parent.parent.localScale.x < 0)
         {
-            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+             xScale = -1;
         }
+        transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+        transform.localEulerAngles = new Vector3(0f, 0f, zAngles);
     }
 
 

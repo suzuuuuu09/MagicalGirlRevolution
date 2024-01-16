@@ -5128,6 +5128,7 @@ MonoBehaviour:
   curHP: 0
   ATK: 6
   DEF: 0
+  isDead: 0
   knockbackForce: 4
   knockbackTime: 0.2
   isKnockback: 0
@@ -5151,7 +5152,6 @@ MonoBehaviour:
   moveTime: 3
   turnRate: 30
   nonVisibleAct: 1
-  enemyStatus: {fileID: 4033240428946077596}
   groundCheck: {fileID: 3377540424781934930}
 --- !u!95 &7592189461417986438
 Animator:

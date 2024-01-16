@@ -8,8 +8,6 @@ public class HP : MonoBehaviour
     public PlayerStatus playerStatus;
     List<HPHeart> hearts = new();
 
-    private Vector3 midPos;
-
 
     private void Update()
     {

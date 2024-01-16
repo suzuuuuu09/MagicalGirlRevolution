@@ -19,8 +19,9 @@ public class MP : MonoBehaviour
     public void DrawStars()
     {
         ClearStars();
-        float max_mp_remainder = playerStatus.maxMP % 2;
-        int starsToMake = (int)((playerStatus.maxMP / 2) + max_mp_remainder);
+        float max_mp_remainder = playerStatus.maxMP % 20;
+        int _max_mp_remainder = (int)Mathf.Clamp01(max_mp_remainder);
+        int starsToMake = (int)((playerStatus.maxMP / 20) + _max_mp_remainder);
         for (int i = 0; i < starsToMake; i++)
         {
             CreateEmptyStar();
@@ -28,7 +29,7 @@ public class MP : MonoBehaviour
 
         for (int i = 0; i < stars.Count; i++)
         {
-            int starStatusRemainder = (int)Mathf.Clamp(playerStatus.curMP - (i * 2), 0, 2);
+            int starStatusRemainder = (int)Mathf.Lerp(0, 4, ((float)playerStatus.curMP - (i * 20)) / 20);
             stars[i].SetStarImage((StarStatus)starStatusRemainder);
         }
     }

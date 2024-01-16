@@ -27,6 +27,7 @@ public class EnemyStatus : MonoBehaviour
 
     private Animator anim = null;
     private Rigidbody2D rb = null;
+    private SpriteRenderer sr = null;
 
 
     private void Start()
@@ -34,6 +35,7 @@ public class EnemyStatus : MonoBehaviour
         curHP = maxHP;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
 
@@ -62,9 +64,9 @@ public class EnemyStatus : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameInvisible()
     {
-        if (collision.CompareTag("FallPoint"))
+        if(isDead)
         {
             enemyHPBar.OnDestroy();
             Destroy(gameObject);

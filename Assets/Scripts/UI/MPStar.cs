@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MPStar : MonoBehaviour
 {
-    public Sprite fullStar, halfStar, emptyStar;
+    public Sprite fullStar, quarterStar, halfStar, threeQuartersStar, emptyStar;
     Image starImage;
 
     private void Awake()
@@ -20,8 +20,14 @@ public class MPStar : MonoBehaviour
             case StarStatus.Empty:
                 starImage.sprite = emptyStar;
                 break;
+            case StarStatus.Quarter:
+                starImage.sprite = quarterStar;
+                break;
             case StarStatus.Half:
                 starImage.sprite = halfStar;
+                break;
+            case StarStatus.ThreeQuarters:
+                starImage.sprite = threeQuartersStar;
                 break;
             case StarStatus.Full:
                 starImage.sprite = fullStar;
@@ -33,6 +39,8 @@ public class MPStar : MonoBehaviour
 public enum StarStatus
 {
     Empty = 0,
-    Half = 1,
-    Full = 2
+    Quarter = 1,
+    Half = 2,
+    ThreeQuarters = 3,
+    Full = 4
 }

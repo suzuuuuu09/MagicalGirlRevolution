@@ -283,18 +283,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1186550124316030646, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3992817443476303215, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 792754715}
-    - target: {fileID: 5294862881722794367, guid: d82d087a1921a05468a7520714d8fda2, type: 3}
-      propertyPath: m_Mass
-      value: 0.8226547
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5453,7 +5445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942811070464173380, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331052449313018536, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6536,6 +6528,50 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!1 &1884014906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884014907}
+  - component: {fileID: 1884014908}
+  m_Layer: 0
+  m_Name: DOTweenManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884014907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884014906}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884014908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884014906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbd10c53bfef1447a0c3b8c354e8606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1897069218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,11 +7014,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1699856982118873159, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.14
+      value: 11.29
       objectReference: {fileID: 0}
     - target: {fileID: 1699856982118873159, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.35
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 1699856982118873159, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7023,6 +7059,10 @@ PrefabInstance:
     - target: {fileID: 7406692208494636302, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_Name
       value: FireSpirit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406692208494636302, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7410,6 +7450,7 @@ SceneRoots:
   - {fileID: 2122223632}
   - {fileID: 1829834092343970372}
   - {fileID: 139545032}
+  - {fileID: 1884014907}
   - {fileID: 854295676}
   - {fileID: 1810093825}
   - {fileID: 1688050118}

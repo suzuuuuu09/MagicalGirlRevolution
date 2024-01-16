@@ -20,7 +20,7 @@ public class EnemyHPBar : MonoBehaviour
 
     private void Start()
     {
-        if(transform.parent.parent.localScale.x > 0)
+        if (transform.parent.parent.localScale.x > 0)
         {
             isPlusScale = true;
         }

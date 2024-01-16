@@ -89,5 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullStar: {fileID: 21300000, guid: c587d4f7b31e21f42a621d61479a1d95, type: 3}
+  quarterStar: {fileID: 21300000, guid: 4d145652ee6345b4eb94b143b021d9b0, type: 3}
   halfStar: {fileID: 21300000, guid: 2104576560ffc9340931de225463ba89, type: 3}
+  threeQuartersStar: {fileID: 21300000, guid: 1e2ab7de9af0d1d42a130df8cd841a51, type: 3}
   emptyStar: {fileID: 21300000, guid: 7fec5dcf158c0f948897cfa33d420f22, type: 3}

@@ -13,10 +13,10 @@ public class Slime : MonoBehaviour
     [Header("‰æ–ÊŠO‚Å‚à“®‚©‚·")]
     public bool nonVisibleAct;                   // ‰æ–ÊŠO‚Å‚à“®‚©‚·
     [Space(40)]
-    public EnemyStatus enemyStatus;
     public ColliderCheck groundCheck;
 
 
+    private EnemyStatus enemyStatus;
     private Transform player = null;
     private SpriteRenderer sr = null;
     private Animator anim = null;
@@ -34,6 +34,7 @@ public class Slime : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        enemyStatus = GetComponent<EnemyStatus>();
         if (transform.position.x >= player.position.x)
         {
             xVector = -1;
@@ -57,13 +58,16 @@ public class Slime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!enemyStatus.isKnockback && (isScreen || nonVisibleAct))
+        if(!enemyStatus.isDead)
         {
-            Movement();
-        }
-        else if (enemyStatus.isKnockback)
-        {
-            Knockback();
+            if (!enemyStatus.isKnockback && (isScreen || nonVisibleAct))
+            {
+                Movement();
+            }
+            else if (enemyStatus.isKnockback)
+            {
+                Knockback();
+            }
         }
     }
     

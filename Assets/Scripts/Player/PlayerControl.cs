@@ -34,12 +34,12 @@ public class PlayerControl: MonoBehaviour
     public float hitRate;                        // ヒット確率
     public float recoveryRate;                   // MP回復確率
     [Space(40)]
-    public PlayerStatus playerStatus;
     public EnemyStatus[] enemyStatus;
 
 
     private Rigidbody2D rb = null;
     private Animator anim = null;
+    private PlayerStatus playerStatus;
     private bool headCheck = false;
     private bool groundCheck = false;
     private bool isJump = false;
@@ -52,6 +52,7 @@ public class PlayerControl: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerStatus = GetComponent<PlayerStatus>();
         transform.position = continuePoint[0].position;
     }
 

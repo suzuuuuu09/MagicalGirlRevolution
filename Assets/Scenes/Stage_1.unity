@@ -5453,11 +5453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942811070464173380, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4331052449313018536, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4331052449313018536, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6976,10 +6976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1612492715536822876, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1699856982118873159, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.14
@@ -7027,10 +7023,6 @@ PrefabInstance:
     - target: {fileID: 7406692208494636302, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
       propertyPath: m_Name
       value: FireSpirit
-      objectReference: {fileID: 0}
-    - target: {fileID: 7406692208494636302, guid: 49143eadf9405ad4ebccda82824521c5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

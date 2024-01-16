@@ -5,32 +5,46 @@ using UnityEngine.UIElements;
 
 public class FireSpirit : MonoBehaviour
 {
-    public float bulletSpeed;  Å@                   //íeÇÃë¨ìx
-    public float limitSpeed;                        //íeÇÃêßå¿ë¨ìx
+    [Header("à⁄ìÆ")]
+    public float bulletSpeed;  Å@                   // ë¨ìx
+    public float limitSpeed;                        // êßå¿ë¨ìx
 
 
-    private Rigidbody2D rb;                         //íeÇÃRigidbody2D
-    private Transform bulletTrans;                  //íeÇÃTransform
-    private Transform playerTrans;                   //í«Ç¢Ç©ÇØÇÈëŒè€ÇÃTransform
+    private EnemyStatus enemyStatus;
+    private Rigidbody2D rb;                         // Rigidbody2D
+    private Transform bulletTrans;                  // Transform
+    private Transform player;                   //í«Ç¢Ç©ÇØÇÈëŒè€ÇÃTransform
 
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bulletTrans = GetComponent<Transform>();
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyStatus = GetComponent<EnemyStatus>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
 
     private void FixedUpdate()
     {
-        Movement();
         ScaleWithoutInfluence();
+        if (!enemyStatus.isDead)
+        {
+            if (!enemyStatus.isKnockback)
+            {
+                Movement();
+            }
+            else if (enemyStatus.isKnockback)
+            {
+                Knockback();
+            }
+        }
     }
 
 
     private void Movement()
     {
-        Vector2 vector2 = playerTrans.position - bulletTrans.position;  //íeÇ©ÇÁí«Ç¢Ç©ÇØÇÈëŒè€Ç÷ÇÃï˚å¸ÇåvéZ
+        Vector2 vector2 = player.position - bulletTrans.position;  //íeÇ©ÇÁí«Ç¢Ç©ÇØÇÈëŒè€Ç÷ÇÃï˚å¸ÇåvéZ
         rb.AddForce(vector2.normalized * bulletSpeed);                  //ï˚å¸ÇÃí∑Ç≥Ç1Ç…ê≥ãKâªÅAîCà”ÇÃóÕÇAddForceÇ≈â¡Ç¶ÇÈ
 
         float speedXTemp = Mathf.Clamp(rb.velocity.x, -limitSpeed, limitSpeed);Å@//Xï˚å¸ÇÃë¨ìxÇêßå¿
@@ -39,22 +53,30 @@ public class FireSpirit : MonoBehaviour
     }
 
 
+    private void Knockback()
+    {
+        float knockbackForce = enemyStatus.knockbackForce;
+        if (transform.position.x > player.position.x)
+        {
+            rb.velocity = new Vector2(knockbackForce, knockbackForce);
+            transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+        }
+        if (transform.position.x < player.position.x)
+        {
+            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+            transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+
     private void ScaleWithoutInfluence()
     {
-        float xScale = 1;
-        if (playerTrans.localScale.x > 0)
+        float xScale = -1;
+        if (player.position.x > transform.position.x)
         {
-            xScale = -1;
+            xScale = 1;
         }
-        /*
-        else if (playerTrans.localScale.x < 0)
-        {
-            xScale = -1;
-        }
-        */
-        transform.localScale = new Vector3(xScale * transform.localScale.x, 
-                                           transform.localScale.y, 
-                                           transform.localScale.z);
+        transform.localScale = new Vector3(xScale * 2.5f, transform.localScale.y, transform.localScale.z);
     }
 
 }

@@ -7,7 +7,7 @@ public class Skelton : MonoBehaviour
     [Header("移動")]
     public float speed;                      // 移動速度
     [Header("Jump")]
-    public float jumpPower;
+    public float jumpPower;                  // ジャンプ力
     [Header("画面外でも動かす")]
     public bool nonVisibleAct;               // 画面外でも動かす
     [Header("接触判定")]

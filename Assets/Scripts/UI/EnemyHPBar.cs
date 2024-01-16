@@ -15,6 +15,20 @@ public class EnemyHPBar : MonoBehaviour
 
 
     private float value = 1;
+    private bool isPlusScale;
+
+
+    private void Start()
+    {
+        if(transform.parent.parent.localScale.x > 0)
+        {
+            isPlusScale = true;
+        }
+        else
+        {
+            isPlusScale= false;
+        }
+    }
 
 
     void Update()
@@ -29,13 +43,27 @@ public class EnemyHPBar : MonoBehaviour
     {
         float xScale = 1;
         float zAngles = -enemyStatus.transform.localEulerAngles.z;
-        if (transform.parent.parent.localScale.x > 0)
+        if(isPlusScale)
         {
-            xScale = 1;
+            if (transform.parent.parent.localScale.x > 0)
+            {
+                xScale = 1;
+            }
+            else if (transform.parent.parent.localScale.x < 0)
+            {
+                 xScale = -1;
+            }
         }
-        else if (transform.parent.parent.localScale.x < 0)
+        else
         {
-             xScale = -1;
+            if (transform.parent.parent.localScale.x > 0)
+            {
+                xScale = -1;
+            }
+            else if (transform.parent.parent.localScale.x < 0)
+            {
+                xScale = 1;
+            }
         }
         transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
         transform.localEulerAngles = new Vector3(0f, 0f, zAngles);

@@ -12,6 +12,7 @@ public class EnemyStatus : MonoBehaviour
     public int ATK;                           // UŒ‚—Í
     public static int atk;                    // UŒ‚—Í(Ši”[—p)
     public int DEF;                           // –hŒä—Í
+    public bool isDead;                       // €–S”»’è
     [Header("Knockback")]
     public float knockbackForce;              // ƒmƒbƒNƒoƒbƒN—Í—Ê
     public float knockbackTime;               // ƒmƒbƒNƒoƒbƒNŠÔ
@@ -124,6 +125,7 @@ public class EnemyStatus : MonoBehaviour
         this.enabled = false;
         curHP = 0;
         PlayerStatus.currentMP++;
+        isDead = true;
     }
     
     

@@ -5297,7 +5297,7 @@ MonoBehaviour:
   ATK: 18
   DEF: 2
   isDead: 0
-  knockbackForce: 3
+  knockbackForce: 4
   knockbackTime: 0.5
   isKnockback: 0
   damageParticle: {fileID: 5668351891046793904}

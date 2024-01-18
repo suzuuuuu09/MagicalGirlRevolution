@@ -12,9 +12,7 @@ public class Skelton : MonoBehaviour
     public bool nonVisibleAct;               // 画面外でも動かす
     [Header("接触判定")]
     public ColliderCheck wallCheckR;
-    public ColliderCheck wallCheckL;
-    public IsGround groundCheckR;
-    public IsGround groundCheckL;
+    public ColliderCheck groundCheckR;
     public IsGround ground;
     public EnemyStatus enemyStatus;
     
@@ -28,9 +26,8 @@ public class Skelton : MonoBehaviour
     private Rigidbody2D rb = null;
     private bool isScreen = false;
     private bool isGround = false;
-    private bool isGroundR = false;
-    private bool isGroundL = false;
-
+    private int jumpCount;
+    private int jumpRandCount;
 
 
     void Start()
@@ -39,6 +36,7 @@ public class Skelton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        jumpRandCount = Random.Range(3, 5);
     }
 
 
@@ -75,14 +73,11 @@ public class Skelton : MonoBehaviour
     private void Movement()
     {
         isGround = ground.IsGrounds();
-        isGroundL = groundCheckL.IsGrounds();
-        isGroundR = groundCheckR.IsGrounds();
         xSpeed = speed;
         anim.SetBool("run", true);
-        if ((wallCheckR.isOn || wallCheckL.isOn) || (!isGroundL || !isGroundR))
+        if (wallCheckR.isOn || !groundCheckR.isOn)
         {
             Jump();
-            //rightTleftF = !rightTleftF;
         }
         if (rightTleftF)
         {
@@ -101,9 +96,10 @@ public class Skelton : MonoBehaviour
     {
         if (isGround)
         {
-            isGroundL = true;
-            isGroundR = true;
+            jumpCount++;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            groundCheckR.isOn = true;
+            wallCheckR.isOn = true;
         }
     }
 

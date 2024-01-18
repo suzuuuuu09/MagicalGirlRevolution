@@ -39,6 +39,7 @@ public class PlayerControl: MonoBehaviour
 
     private Rigidbody2D rb = null;
     private Animator anim = null;
+    private PhysicsMaterial2D pm = null;
     private PlayerStatus playerStatus;
     private bool headCheck = false;
     private bool groundCheck = false;
@@ -52,6 +53,7 @@ public class PlayerControl: MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        pm = GetComponent<CapsuleCollider2D>().sharedMaterial;
         playerStatus = GetComponent<PlayerStatus>();
         transform.position = continuePoint[0].position;
     }
@@ -103,6 +105,7 @@ public class PlayerControl: MonoBehaviour
             {
                 anim.SetBool("run", true);
                 rb.velocity = new Vector2(speed, rb.velocity.y);
+                pm.friction = 0f;
                 if (!isUlt)
                 {
                     transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
@@ -112,7 +115,8 @@ public class PlayerControl: MonoBehaviour
             {
                 anim.SetBool("run", true);
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
-                if(!isUlt) 
+                pm.friction = 0f;
+                if (!isUlt) 
                 {
                     transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f);
                 }
@@ -120,6 +124,7 @@ public class PlayerControl: MonoBehaviour
             else
             {
                 // â°ï˚å¸ÇÃì¸óÕÇ™Ç»Ç¢èÍçáÅAë¨ìxÇ0Ç…
+                pm.friction = 8f;
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
 

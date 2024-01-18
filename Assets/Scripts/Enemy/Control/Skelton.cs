@@ -17,8 +17,6 @@ public class Skelton : MonoBehaviour
     public EnemyStatus enemyStatus;
     
 
-    public static bool rightTleftF = false;
-
     private float xSpeed;
     private Transform player = null;
     private SpriteRenderer sr = null;
@@ -75,16 +73,16 @@ public class Skelton : MonoBehaviour
         isGround = ground.IsGrounds();
         xSpeed = speed;
         anim.SetBool("run", true);
-        if (wallCheckR.isOn || !groundCheckR.isOn)
+        if ((wallCheckR.isOn || !groundCheckR.isOn) && !enemyStatus.isKnockback)
         {
             Jump();
         }
-        if (rightTleftF)
+        if (transform.position.x < player.position.x)
         {
             xSpeed = -speed;
             transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
         }
-        else
+        else if (transform.position.x > player.position.x)
         {
             transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
         }
@@ -99,7 +97,6 @@ public class Skelton : MonoBehaviour
             jumpCount++;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             groundCheckR.isOn = true;
-            wallCheckR.isOn = true;
         }
     }
 

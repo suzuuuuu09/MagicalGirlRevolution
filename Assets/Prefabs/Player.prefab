@@ -470,7 +470,6 @@ MonoBehaviour:
     m_Bits: 128
   hitRate: 80
   recoveryRate: 5
-  playerStatus: {fileID: 4375381914700761096}
   enemyStatus:
   - {fileID: 4033240428946077596, guid: 15de73a7bf1c255489a83ee3c7303a70, type: 3}
   - {fileID: 4297143238761530737, guid: 051be08190fc8e24aa92e70c1a5f1ed1, type: 3}
@@ -506,7 +505,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4476029966824545724}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1f17af2933c1ceb4f88b3a9e7d9119f6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -548,7 +547,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 1c393fc1e47157b4da68280a2bf15935, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

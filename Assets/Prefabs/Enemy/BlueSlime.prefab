@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1186550124316030646
 Transform:
   m_ObjectHideFlags: 0
@@ -5342,8 +5342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStatus: {fileID: 3018341344169698873}
-  uiHue: {fileID: 3203546396646986294}
+  uiHue: {fileID: 8293577059661136643}
   fillSpeed: 0.3
   hpBarFill: {fileID: 3992817443476303215}
 --- !u!1 &4339376089173788635
@@ -5403,7 +5402,7 @@ GameObject:
   - component: {fileID: 2220781683273821078}
   - component: {fileID: 1503190403388622646}
   - component: {fileID: 3992817443476303215}
-  - component: {fileID: 3203546396646986294}
+  - component: {fileID: 8293577059661136643}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -5468,7 +5467,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.11
---- !u!114 &3203546396646986294
+--- !u!114 &8293577059661136643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

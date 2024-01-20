@@ -8,18 +8,19 @@ using DG.Tweening;
 
 public class EnemyHPBar : MonoBehaviour
 {
-    public EnemyStatus enemyStatus;
     public UIHue uiHue;
     public float fillSpeed;
     public Image hpBarFill;
 
 
+    private EnemyStatus enemyStatus = null;
     private float value = 1;
     private bool isPlusScale;
 
 
     private void Start()
     {
+        enemyStatus = GetComponentInParent<EnemyStatus>();
         if (transform.parent.parent.localScale.x > 0)
         {
             isPlusScale = true;
@@ -76,6 +77,7 @@ public class EnemyHPBar : MonoBehaviour
         if(hueValue < 360)
         {
             hueValue = -170 * value + 410;
+            hueValue = Mathf.Clamp(hueValue, 240, 360);
             uiHue.hue = hueValue;
         }
     }
@@ -84,7 +86,6 @@ public class EnemyHPBar : MonoBehaviour
     private void UpdateHPBar()
     {
         value = (float)enemyStatus.curHP / (float)enemyStatus.maxHP;
-        enemyStatus.curHP = Mathf.Clamp(enemyStatus.curHP, 0, enemyStatus.maxHP);
         hpBarFill.DOFillAmount(value, fillSpeed);
     }
 

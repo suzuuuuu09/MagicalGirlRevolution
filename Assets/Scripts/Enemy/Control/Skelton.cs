@@ -92,17 +92,18 @@ public class Skelton : MonoBehaviour
 
     private void Jump()
     {
+        groundCheckR.isOn = true;
         if (isGround)
         {
             jumpCount++;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            groundCheckR.isOn = true;
         }
     }
 
 
     private void Knockback()
     {
+        groundCheckR.isOn = true;
         float knockbackForce = enemyStatus.knockbackForce;
         if (transform.position.x > player.position.x)
         {

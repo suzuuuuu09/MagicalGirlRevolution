@@ -63,25 +63,11 @@ public class PlayerStatus : MonoBehaviour
 
     void Update()
     {
+        // HP,MPˆ—
         currentHP = curHP;
         currentMP = curMP;
-        // HP,MPˆ—
-        if (curHP > maxHP)
-        {
-            curHP = maxHP;
-        }
-        if (curMP > maxMP)
-        {
-            curMP = maxMP;
-        }
-        if (curHP < 0)
-        {
-            curHP = 0;
-        }
-        if (curMP < 0)
-        {
-            curMP = 0;
-        }
+        curHP = Mathf.Clamp(curHP, 0, maxHP);
+        curMP = Mathf.Clamp(curMP, 0, maxMP);
 
         // ƒŒƒxƒ‹ˆ—
         if (Exp >= LvUpExp)

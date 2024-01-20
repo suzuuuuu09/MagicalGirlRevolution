@@ -41,10 +41,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Update()
     {
-        if(curHP > maxHP)
-        {
-            curHP = maxHP;
-        }
+        curHP = Mathf.Clamp(curHP, 0, maxHP);
     }
 
 

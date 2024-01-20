@@ -5015,7 +5015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStatus: {fileID: 4033240428946077596}
   uiHue: {fileID: 5689710123434296967}
   fillSpeed: 0.3
   hpBarFill: {fileID: 6733649702365449649}
@@ -5040,7 +5039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4331052449313018536
 Transform:
   m_ObjectHideFlags: 0

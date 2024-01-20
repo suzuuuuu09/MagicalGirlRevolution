@@ -8,8 +8,9 @@ public class Slime : MonoBehaviour
     [Header("移動")]
     public float moveSpeed;                      // 移動速度
     public float jumpPower;                      // ジャンプ力
-    public float moveTime;                       // 移動時間
-    public float turnRate;
+    public float moveTimeMax;                    // 移動時間Max
+    public float moveTimeMin;                    // 移動時間Min
+    public float turnRate;                       // Playerの方を向く確率
     [Header("画面外でも動かす")]
     public bool nonVisibleAct;                   // 画面外でも動かす
     [Space(40)]
@@ -25,6 +26,7 @@ public class Slime : MonoBehaviour
     private float timeCount = 0;
     private float xVector;
     private float xScale;
+    private float moveTimeRand;
 
 
     // Start is called before the first frame update
@@ -45,6 +47,7 @@ public class Slime : MonoBehaviour
             xVector = 1;
             xScale = 1;
         }
+        moveTimeRand = Random.Range(moveTimeMin, moveTimeMax);
     }
 
     void Update()
@@ -74,8 +77,9 @@ public class Slime : MonoBehaviour
     
     private void Movement()
     {
-        if (timeCount > moveTime)
+        if (timeCount > moveTimeRand)
         {
+            moveTimeRand = Random.Range(moveTimeMin, moveTimeMax);
             anim.SetBool("jump", true);
             groundCheck.isOn = false;
             if (transform.position.x >= player.position.x && MathCheck.Probability(turnRate))

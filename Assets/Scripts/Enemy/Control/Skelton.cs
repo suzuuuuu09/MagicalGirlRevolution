@@ -8,8 +8,6 @@ public class Skelton : MonoBehaviour
     public float speed;                      // 移動速度
     [Header("Jump")]
     public float jumpPower;                  // ジャンプ力
-    [Header("画面外でも動かす")]
-    public bool nonVisibleAct;               // 画面外でも動かす
     [Header("接触判定")]
     public ColliderCheck wallCheckR;
     public ColliderCheck groundCheckR;
@@ -17,33 +15,36 @@ public class Skelton : MonoBehaviour
     public EnemyStatus enemyStatus;
     
 
-    private float xSpeed;
     private Transform player = null;
-    private SpriteRenderer sr = null;
     private Animator anim = null;
     private Rigidbody2D rb = null;
-    private bool isScreen = false;
+    private float xSpeed;
+    private float abandonCountTime;
     private bool isGround = false;
+    private bool isAbandon = false;
     private int jumpCount;
     private int jumpRandCount;
+
+
+    private bool IsPlayerRight()
+    {
+        if (transform.position.x < player.position.x)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        jumpRandCount = Random.Range(3, 5);
-    }
-
-
-    void Update()
-    {
-        if (sr.isVisible)
-        {
-            isScreen = true;
-        }
+        jumpRandCount = Random.Range(4, 6);
     }
 
 
@@ -51,14 +52,13 @@ public class Skelton : MonoBehaviour
     {
         if (!enemyStatus.isKnockback)
         {
-            if (isScreen || nonVisibleAct)
+            if(!isAbandon)
             {
                 Movement();
             }
             else
             {
-                anim.SetBool("run", false);
-                rb.Sleep();
+                AbandonMovement();
             }
         }
         else if (enemyStatus.isKnockback)
@@ -73,18 +73,32 @@ public class Skelton : MonoBehaviour
         isGround = ground.IsGrounds();
         xSpeed = speed;
         anim.SetBool("run", true);
-        if ((wallCheckR.isOn || !groundCheckR.isOn) && !enemyStatus.isKnockback)
+        if (wallCheckR.isOn || !groundCheckR.isOn)
         {
+            WallCheckAbandon();
             Jump();
         }
-        if (transform.position.x < player.position.x)
+        if (IsPlayerRight())
         {
             xSpeed = -speed;
             transform.localScale = new Vector3(2.5f, transform.localScale.y, transform.localScale.z);
         }
-        else if (transform.position.x > player.position.x)
+        else if (!IsPlayerRight())
         {
             transform.localScale = new Vector3(-2.5f, transform.localScale.y, transform.localScale.z);
+        }
+        rb.velocity = new Vector2(-xSpeed, rb.velocity.y);
+    }
+
+
+    private void AbandonMovement()
+    {
+        isGround = ground.IsGrounds();
+        xSpeed = speed;
+        anim.SetBool("run", true);
+        if (wallCheckR.isOn || !groundCheckR.isOn)
+        {
+            Jump();
         }
         rb.velocity = new Vector2(-xSpeed, rb.velocity.y);
     }
@@ -105,13 +119,31 @@ public class Skelton : MonoBehaviour
     {
         groundCheckR.isOn = true;
         float knockbackForce = enemyStatus.knockbackForce;
-        if (transform.position.x > player.position.x)
+        if (IsPlayerRight())
+        {
+            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+        }
+        else if (!IsPlayerRight())
         {
             rb.velocity = new Vector2(knockbackForce, knockbackForce);
         }
-        if (transform.position.x < player.position.x)
+    }
+
+
+    private void WallCheckAbandon()
+    {
+        if(jumpCount == 0)
         {
-            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+            jumpRandCount = Random.Range(4, 6);
+            abandonCountTime = Time.time + jumpRandCount;
+        }
+        if (jumpCount >= jumpRandCount)
+        {
+            if (Time.time < abandonCountTime)
+            {
+                isAbandon = true;
+            }
+            jumpCount = 0;
         }
     }
 }

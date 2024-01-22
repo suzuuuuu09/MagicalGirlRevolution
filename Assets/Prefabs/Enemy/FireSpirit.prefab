@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 321285519452929155}
   - component: {fileID: 4482636148993375814}
   - component: {fileID: 8733206734037122304}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4961,7 +4961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2984619062655764021}
   - component: {fileID: 7278408237094294840}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5001,7 +5001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHue: {fileID: 0}
+  uiHue: {fileID: 102351775177184357}
   fillSpeed: 0.3
   hpBarFill: {fileID: 195350987692447447}
 --- !u!1 &7406692208494636302
@@ -5230,7 +5230,7 @@ GameObject:
   - component: {fileID: 2302933614220788400}
   - component: {fileID: 2924407446748206201}
   - component: {fileID: 1398186672320143808}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10213,7 +10213,7 @@ GameObject:
   - component: {fileID: 2862899752177321139}
   - component: {fileID: 195350987692447447}
   - component: {fileID: 102351775177184357}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

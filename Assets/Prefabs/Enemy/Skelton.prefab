@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 760106261501010693}
   - component: {fileID: 5946074248684607411}
   - component: {fileID: 7030135182272106703}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.355, z: 0}
-  m_LocalScale: {x: 0.52, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.13, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2940545456556585969}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 8152629727599950413}
   - component: {fileID: 3993078893188936207}
   - component: {fileID: 3621953704599680931}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5852057593033094410}
   - component: {fileID: 8609100920232539500}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   jumpPower: 16
-  nonVisibleAct: 1
   wallCheckR: {fileID: 3756216161625630972}
   groundCheckR: {fileID: 9103742626263067537}
   ground: {fileID: 2836380900885163762}
@@ -5678,7 +5677,7 @@ GameObject:
   - component: {fileID: 6103678700591226086}
   - component: {fileID: 1829225182533754657}
   - component: {fileID: 6026057287955857683}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

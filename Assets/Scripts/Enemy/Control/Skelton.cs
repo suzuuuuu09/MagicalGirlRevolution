@@ -129,6 +129,7 @@ public class Skelton : MonoBehaviour
     private void Knockback()
     {
         groundCheckR.isOn = true;
+        isAbandon = false;
         float knockbackForce = enemyStatus.knockbackForce;
         if (IsPlayerRight())
         {

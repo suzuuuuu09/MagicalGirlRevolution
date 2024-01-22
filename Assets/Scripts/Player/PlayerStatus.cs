@@ -107,16 +107,22 @@ public class PlayerStatus : MonoBehaviour
             ProCamera2DShake.Instance.Shake("PlayerDamage");
             if (curHP <= 0)
             {
-                AudioManager.instance.StopAll();
-                AudioManager.instance.Play("Player_Dead");
-                anim.SetTrigger("dead");
-                isDead = true;
+                Dead();
             }
             else
             {
                 AudioManager.instance.Play("Player_Damage");
             }
         }
+    }
+
+
+    private void Dead()
+    {
+        AudioManager.instance.StopAll();
+        AudioManager.instance.Play("Player_Dead");
+        anim.SetTrigger("dead");
+        isDead = true;
     }
 
 
@@ -132,23 +138,19 @@ public class PlayerStatus : MonoBehaviour
 
     IEnumerator Invincible()
     {
+        Color color = spriteRenderer.color;
+        for (int i = 0; i < damageTime; i++)
+        {
+            yield return new WaitForSeconds(flashTime);
+            spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
+
+            yield return new WaitForSeconds(flashTime);
+            spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
+        }
+        spriteRenderer.color = color;
         if (!isDead)
         {
-            Color color = spriteRenderer.color;
-            for (int i = 0; i < damageTime; i++)
-            {
-                yield return new WaitForSeconds(flashTime);
-                spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
-
-                yield return new WaitForSeconds(flashTime);
-                spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
-            }
-            spriteRenderer.color = color;
             gameObject.layer = LayerMask.NameToLayer("Player");
-        }
-        else
-        {
-            yield break; 
         }
     }
 

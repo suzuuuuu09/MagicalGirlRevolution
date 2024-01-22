@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9024841719071584071}
   - component: {fileID: 542677307510547586}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02201e4d950c2e4c884a4703a1ae137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStatus: {fileID: 1992457606326038251}
   uiHue: {fileID: 6420507398283358611}
   fillSpeed: 0.3
   hpBarFill: {fileID: 6445305679581094579}
@@ -98,7 +97,7 @@ GameObject:
   - component: {fileID: 1847256604379051094}
   - component: {fileID: 2400668882168884443}
   - component: {fileID: 441134947311472180}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &485311192915767525
 Transform:
   m_ObjectHideFlags: 0
@@ -314,8 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50000
   curHP: 0
-  ATK: 0
+  ATK: 12
   DEF: 0
+  isDead: 0
   knockbackForce: 0
   knockbackTime: 0
   isKnockback: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1491857879559697044}
   - component: {fileID: 6445305679581094579}
   - component: {fileID: 6420507398283358611}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 7396577621010081670}
   - component: {fileID: 4028735666041334450}
   - component: {fileID: 8456147927983478854}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -130,7 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   jumpPower: 12
-  moveTime: 3
+  moveTimeMax: 3
+  moveTimeMin: 2
   turnRate: 70
   nonVisibleAct: 1
   groundCheck: {fileID: 4215659352555179716}
@@ -5151,7 +5152,7 @@ GameObject:
   - component: {fileID: 8490609709087014729}
   - component: {fileID: 3953183697485830524}
   - component: {fileID: 1450895252058050353}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5302,7 +5303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8059267851564097188}
   - component: {fileID: 6265024812948792219}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5403,7 +5404,7 @@ GameObject:
   - component: {fileID: 1503190403388622646}
   - component: {fileID: 3992817443476303215}
   - component: {fileID: 8293577059661136643}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5491,7 +5492,7 @@ GameObject:
   - component: {fileID: 4214829293195022450}
   - component: {fileID: 8122459112539898996}
   - component: {fileID: 8286842062080362401}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
